@@ -1,7 +1,6 @@
 # AayuMove
 
-A personalized fitness and wellness web app
-for students and young people.
+A personalized fitness and wellness web app for students and young people.
 
 ## Features
 
@@ -17,8 +16,17 @@ for students and young people.
 - React
 - JavaScript
 - Vite
+- Python (FastAPI/Flask Backend for AI assistant)
 
 ## Run the Project
 
+### Frontend
+```bash
 npm install
 npm run dev
+```
+
+### AI Backend (Optional)
+```bash
+python server.py
+```
