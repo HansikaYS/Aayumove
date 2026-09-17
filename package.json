@@ -1,0 +1,23 @@
+{
+  "name": "aayumove",
+  "version": "1.0.0",
+  "description": "AayuMove - Adaptable Fitness and Wellness Web Application for Students",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "server": "node server.js",
+    "server:py": ".\\venv\\Scripts\\python server.py",
+    "build": "node build.js",
+    "validate": "node build.js",
+    "test": "node build.js"
+  },
+  "keywords": [
+    "fitness",
+    "wellness",
+    "students",
+    "adaptive-fitness",
+    "hostel-workout"
+  ],
+  "author": "AayuMove Team",
+  "license": "MIT"
+}
