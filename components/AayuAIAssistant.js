@@ -26,6 +26,23 @@ export class AayuAIAssistant {
     this.quickPrompts = AayuAIService.getQuickPrompts(user);
   }
 
+  formatMarkdown(text) {
+    if (!text) return '';
+    let escaped = text
+      .replace(/&/g, '&amp;')
+      .replace(/</g, '&lt;')
+      .replace(/>/g, '&gt;');
+
+    // Bold **text**
+    escaped = escaped.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>');
+    // Italic *text*
+    escaped = escaped.replace(/\*(.*?)\*/g, '<em>$1</em>');
+    // Blockquote > text
+    escaped = escaped.replace(/^>\s*(.+)$/gm, '<blockquote style="border-left: 3px solid #8b5cf6; padding-left: 8px; margin: 6px 0; color: var(--text-subtle); font-style: italic;">$1</blockquote>');
+
+    return escaped;
+  }
+
   sendUserMessage(text) {
     if (!text || !text.trim()) return;
 
@@ -40,7 +57,7 @@ export class AayuAIAssistant {
 
     // Generate tailored AI response
     setTimeout(() => {
-      const response = AayuAIService.generateResponse(userMsg.text, this.currentUser);
+      const response = AayuAIService.generateResponse(userMsg.text, this.currentUser, this.messages);
       const aiMsg = {
         id: 'msg-' + (Date.now() + 1),
         sender: 'ai',
@@ -52,7 +69,7 @@ export class AayuAIAssistant {
       };
       this.messages.push(aiMsg);
       this.renderMessages();
-    }, 450);
+    }, 400);
   }
 
   renderMessages() {
@@ -63,7 +80,7 @@ export class AayuAIAssistant {
       if (m.sender === 'user') {
         return `
           <div class="chat-bubble chat-bubble-user">
-            ${m.text}
+            ${m.text.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;')}
           </div>
         `;
       } else {
@@ -73,7 +90,7 @@ export class AayuAIAssistant {
               <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
               Aayu AI Student Coach
             </div>
-            <div style="white-space: pre-line;">${m.text}</div>
+            <div style="white-space: pre-line; word-break: break-word;">${this.formatMarkdown(m.text)}</div>
 
             ${m.actionLabel ? `
               <div style="margin-top: 0.75rem;">
