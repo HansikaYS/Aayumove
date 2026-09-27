@@ -28,11 +28,33 @@ export function renderDashboardPage({ currentUser, selectedAdaptiveTime }) {
     <main class="container" style="padding-top: 2rem; padding-bottom: 3rem;">
       <!-- Hero Welcome Section -->
       <section class="hero-welcome-section">
-        <div class="hero-welcome-greeting">
-          <span>👋 ${timeGreeting}, <strong style="color: var(--text-main);">${firstName}</strong></span>
-          <span class="badge badge-indigo">${stage}</span>
+        <!-- Student Header Profile & Actions Row -->
+        <div class="dashboard-user-bar">
+          <div class="dashboard-user-info">
+            <div class="user-avatar-circle" style="width: 44px; height: 44px; font-size: 1.1rem; flex-shrink: 0; background: linear-gradient(135deg, #f97316, #8b5cf6);">${firstName.charAt(0).toUpperCase()}</div>
+            <div>
+              <div class="hero-welcome-greeting" style="margin-bottom: 0.15rem;">
+                <span>👋 ${timeGreeting}, <strong style="color: var(--text-main);">${firstName}</strong></span>
+                <span class="badge badge-indigo">${stage}</span>
+              </div>
+              <div style="font-size: 0.8rem; color: var(--text-muted);">${userGoal} • ${currentUser?.availableTime || '10 mins'} daily window</div>
+            </div>
+          </div>
+
+          <!-- Quick Action Buttons for Profile and Logout -->
+          <div class="dashboard-user-actions">
+            <button class="btn btn-secondary btn-sm" id="btn-dash-profile" onclick="window.AayuApp.navigate('profile')">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+              <span>Profile</span>
+            </button>
+            <button class="btn btn-secondary btn-sm" id="btn-dash-logout" onclick="window.AayuApp.logout()" title="Logout of AayuMove">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><polyline points="16 17 21 12 16 7"/><line x1="21" y1="12" x2="9" y2="12"/></svg>
+              <span>Logout</span>
+            </button>
+          </div>
         </div>
-        <h1 class="hero-welcome-title">
+
+        <h1 class="hero-welcome-title" style="margin-top: 1.25rem;">
           Ready to <span class="gradient-text">move on your own terms?</span>
         </h1>
         <p style="color: var(--text-muted); font-size: 1rem; max-width: 650px;">

@@ -62,20 +62,20 @@ export function renderNavbar({ currentTab, currentUser, onNavigate, onOpenAI, on
         <!-- Nav Right Actions -->
         <div class="nav-actions">
           <!-- Aayu AI Pill Button -->
-          <button class="ai-pill-btn" id="btn-open-aayu-ai" onclick="window.AayuApp.toggleAI()">
+          <button class="ai-pill-btn" id="btn-open-aayu-ai" onclick="window.AayuApp.toggleAI()" title="Ask Aayu AI">
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2a10 10 0 1 0 10 10H12V2z"/><path d="M12 12 2.1 12.5"/><path d="m4.5 15 4 4"/><path d="m14.5 4 4 4"/></svg>
-            <span>Ask Aayu AI</span>
+            <span class="ai-pill-label">Ask Aayu AI</span>
           </button>
 
-          <!-- User Profile / Logout Dropdown Trigger -->
-          <div class="user-badge-dropdown" id="nav-user-profile" onclick="window.AayuApp.navigate('profile')">
+          <!-- User Profile Dropdown Trigger -->
+          <div class="user-badge-dropdown ${currentTab === 'profile' ? 'active' : ''}" id="nav-user-profile" onclick="window.AayuApp.navigate('profile')" title="Student Profile & Settings">
             <div class="user-avatar-circle">${initial}</div>
             <span class="user-name-label">${userName}</span>
           </div>
 
-          <button class="btn btn-secondary btn-sm" id="btn-nav-logout" onclick="window.AayuApp.logout()" title="Logout">
+          <button class="btn btn-secondary btn-sm nav-logout-btn" id="btn-nav-logout" onclick="window.AayuApp.logout()" title="Logout of AayuMove">
             <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><polyline points="16 17 21 12 16 7"/><line x1="21" y1="12" x2="9" y2="12"/></svg>
-            Logout
+            <span class="nav-logout-text">Logout</span>
           </button>
         </div>
       </div>
@@ -83,25 +83,29 @@ export function renderNavbar({ currentTab, currentUser, onNavigate, onOpenAI, on
       <!-- Mobile Bottom Navigation Bar -->
       <div class="mobile-nav-bar">
         <div class="mobile-nav-items">
-          <button class="mobile-nav-btn ${currentTab === 'dashboard' ? 'active' : ''}" onclick="window.AayuApp.navigate('dashboard')">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/></svg>
+          <button class="mobile-nav-btn ${currentTab === 'dashboard' ? 'active' : ''}" id="mob-nav-home" onclick="window.AayuApp.navigate('dashboard')">
+            <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/></svg>
             <span>Home</span>
           </button>
-          <button class="mobile-nav-btn ${currentTab === 'adaptive' ? 'active' : ''}" onclick="window.AayuApp.navigate('adaptive')">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+          <button class="mobile-nav-btn ${currentTab === 'adaptive' ? 'active' : ''}" id="mob-nav-adapt" onclick="window.AayuApp.navigate('adaptive')">
+            <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
             <span>Adapt</span>
           </button>
-          <button class="mobile-nav-btn ${currentTab === 'activities' ? 'active' : ''}" onclick="window.AayuApp.navigate('activities')">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 14 14"/></svg>
+          <button class="mobile-nav-btn ${currentTab === 'activities' ? 'active' : ''}" id="mob-nav-activities" onclick="window.AayuApp.navigate('activities')">
+            <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 14 14"/></svg>
             <span>Workouts</span>
           </button>
-          <button class="mobile-nav-btn ${currentTab === 'diet' ? 'active' : ''}" onclick="window.AayuApp.navigate('diet')">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 8h1a4 4 0 0 1 0 8h-1"/><path d="M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8z"/></svg>
+          <button class="mobile-nav-btn ${currentTab === 'diet' ? 'active' : ''}" id="mob-nav-diet" onclick="window.AayuApp.navigate('diet')">
+            <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 8h1a4 4 0 0 1 0 8h-1"/><path d="M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8z"/></svg>
             <span>Diet</span>
           </button>
-          <button class="mobile-nav-btn ${currentTab === 'progress' ? 'active' : ''}" onclick="window.AayuApp.navigate('progress')">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 20v-6M6 20V10M18 20V4"/></svg>
+          <button class="mobile-nav-btn ${currentTab === 'progress' ? 'active' : ''}" id="mob-nav-progress" onclick="window.AayuApp.navigate('progress')">
+            <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 20v-6M6 20V10M18 20V4"/></svg>
             <span>Stats</span>
+          </button>
+          <button class="mobile-nav-btn ${currentTab === 'profile' ? 'active' : ''}" id="mob-nav-profile" onclick="window.AayuApp.navigate('profile')">
+            <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+            <span>Profile</span>
           </button>
         </div>
       </div>

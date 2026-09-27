@@ -95,11 +95,7 @@ class StorageService {
       if (!users || users.length === 0) {
         localStorage.setItem(USERS_KEY, JSON.stringify([DEFAULT_DEMO_USER]));
       }
-      // If no active session, auto log in demo user for seamless first review
-      const current = this.getCurrentUser();
-      if (!current) {
-        this.setCurrentUser(DEFAULT_DEMO_USER);
-      }
+      // Always require explicit login/signup - no automatic session
     } catch (e) {
       console.warn('LocalStorage error in init:', e);
     }
