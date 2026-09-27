@@ -86,16 +86,12 @@ export class SmartReminderManager {
     if (!container) {
       container = document.createElement('div');
       container.id = 'smart-reminder-toast-container';
-      container.style.position = 'fixed';
-      container.style.bottom = '85px';
-      container.style.right = '1.5rem';
-      container.style.zIndex = '80';
-      container.style.maxWidth = '380px';
+      container.className = 'smart-reminder-toast-container';
       document.body.appendChild(container);
     }
 
     container.innerHTML = `
-      <div style="background: rgba(255, 255, 255, 0.97); border: 1px solid ${toastBorder}; border-radius: var(--radius-lg); padding: 1.1rem 1.25rem; box-shadow: 0 15px 35px rgba(0,0,0,0.12), 0 0 20px rgba(0,0,0,0.04); backdrop-filter: blur(16px); animation: modalSlideUp 0.3s cubic-bezier(0.16, 1, 0.3, 1);">
+      <div class="smart-reminder-toast-card" style="border-color: ${toastBorder};">
         <div style="display: flex; align-items: flex-start; gap: 0.75rem; margin-bottom: 0.75rem;">
           <div style="width: 32px; height: 32px; border-radius: 50%; background: ${toastColor}15; display: flex; align-items: center; justify-content: center; color: ${toastColor}; flex-shrink: 0;">
             ${toastIcon}
@@ -106,7 +102,7 @@ export class SmartReminderManager {
           </div>
         </div>
 
-        <div style="display: flex; align-items: center; justify-content: flex-end; gap: 0.5rem;">
+        <div style="display: flex; align-items: center; justify-content: flex-end; gap: 0.5rem; flex-wrap: wrap;">
           <button class="btn btn-secondary btn-sm" onclick="window.AayuApp.skipReminderForNow()">
             Skip for Now
           </button>

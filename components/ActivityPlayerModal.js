@@ -260,7 +260,7 @@ export class ActivityPlayerModal {
           You just invested in your physical energy and academic stamina. Small daily moves compound into lifelong strength!
         </p>
 
-        <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; margin-bottom: 2rem;">
+        <div class="completed-stats-grid">
           <div style="background: rgba(0,0,0,0.03); border: 1px solid var(--border-subtle); border-radius: var(--radius-md); padding: 1rem;">
             <div style="font-size: 1.6rem; font-weight: 800; color: #0d9488;">+${minutesLogged}</div>
             <div style="font-size: 0.76rem; color: var(--text-muted);">Active Mins</div>

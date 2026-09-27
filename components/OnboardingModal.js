@@ -105,7 +105,7 @@ export class OnboardingModal {
                 <label style="display: block; font-size: 0.8rem; font-weight: 700; color: var(--text-muted); text-transform: uppercase; margin-bottom: 0.6rem;">
                   Your Fitness Stage
                 </label>
-                <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 0.6rem;">
+                <div class="onboard-grid-3">
                   ${['Beginner', 'Intermediate', 'Advanced'].map(stage => `
                     <button type="button" 
                             class="time-pill-btn ${this.data.fitnessStage === stage ? 'selected' : ''}" 
@@ -174,10 +174,10 @@ export class OnboardingModal {
                 <label style="display: block; font-size: 0.8rem; font-weight: 700; color: var(--text-muted); text-transform: uppercase; margin-bottom: 0.5rem;">
                   Typical Free Time Available
                 </label>
-                <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 0.5rem;">
+                <div class="onboard-grid-4">
                   ${['5 minutes', '10 minutes', '15 minutes', '30+ minutes'].map(t => `
                     <button type="button" 
-                            class="time-pill-btn ${this.data.availableTime === t ? 'selected' : ''}"
+                            class="time-pill-btn ${this.data.availableTime === t ? 'selected' : ''}" 
                             onclick="window.AayuApp.onboarding.setField('availableTime', '${t}')"
                             style="padding: 0.75rem 0.3rem;">
                       <span style="font-weight: 800; font-size: 1.1rem;">${t.replace(' minutes', 'm')}</span>
@@ -190,10 +190,10 @@ export class OnboardingModal {
                 <label style="display: block; font-size: 0.8rem; font-weight: 700; color: var(--text-muted); text-transform: uppercase; margin-bottom: 0.5rem;">
                   Preferred Time of Day
                 </label>
-                <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 0.5rem;">
+                <div class="onboard-grid-4">
                   ${['Morning', 'Afternoon', 'Evening', 'Custom'].map(time => `
                     <button type="button" 
-                            class="time-pill-btn ${this.data.preferredTime === time ? 'selected' : ''}"
+                            class="time-pill-btn ${this.data.preferredTime === time ? 'selected' : ''}" 
                             onclick="window.AayuApp.onboarding.setField('preferredTime', '${time}')"
                             style="padding: 0.7rem 0.3rem;">
                       <span style="font-weight: 700; font-size: 0.85rem;">${time}</span>
@@ -206,7 +206,7 @@ export class OnboardingModal {
                 <label style="display: block; font-size: 0.8rem; font-weight: 700; color: var(--text-muted); text-transform: uppercase; margin-bottom: 0.5rem;">
                   Current Activity Level
                 </label>
-                <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 0.5rem;">
+                <div class="onboard-grid-2">
                   ${[
                     { id: 'Sedentary', label: 'Mostly Sitting (Lectures/Desk)' },
                     { id: 'Lightly Active', label: 'Walking campus occasionally' },
@@ -237,10 +237,10 @@ export class OnboardingModal {
                 <label style="display: block; font-size: 0.8rem; font-weight: 700; color: var(--text-muted); text-transform: uppercase; margin-bottom: 0.5rem;">
                   Dietary Preference
                 </label>
-                <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 0.5rem;">
+                <div class="onboard-grid-3">
                   ${['Vegetarian', 'Non-Vegetarian', 'No Preference'].map(d => `
                     <button type="button" 
-                            class="time-pill-btn ${this.data.dietaryPreference === d ? 'selected' : ''}"
+                            class="time-pill-btn ${this.data.dietaryPreference === d ? 'selected' : ''}" 
                             onclick="window.AayuApp.onboarding.setField('dietaryPreference', '${d}')"
                             style="padding: 0.75rem 0.5rem;">
                       <span style="font-weight: 700; font-size: 0.85rem;">${d}</span>
@@ -253,10 +253,10 @@ export class OnboardingModal {
                 <label style="display: block; font-size: 0.8rem; font-weight: 700; color: var(--text-muted); text-transform: uppercase; margin-bottom: 0.5rem;">
                   Budget Friendly
                 </label>
-                <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 0.5rem;">
+                <div class="onboard-grid-2">
                   ${['Yes', 'No'].map(b => `
                     <button type="button" 
-                            class="time-pill-btn ${this.data.budgetFriendly === b ? 'selected' : ''}"
+                            class="time-pill-btn ${this.data.budgetFriendly === b ? 'selected' : ''}" 
                             onclick="window.AayuApp.onboarding.setField('budgetFriendly', '${b}')"
                             style="padding: 0.75rem 0.5rem;">
                       <span style="font-weight: 700; font-size: 0.85rem;">${b}</span>

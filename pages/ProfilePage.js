@@ -28,7 +28,7 @@ export function renderProfilePage({ currentUser, profileSavedMessage }) {
         <!-- Basic Info -->
         <div>
           <h3 style="font-size: 1.2rem; font-weight: 700; margin-bottom: 1rem; color: #7c3aed;">1. Student Identity</h3>
-          <div style="display: grid; grid-template-columns: 2fr 1fr; gap: 1rem;">
+          <div class="profile-identity-grid">
             <div>
               <label style="display: block; font-size: 0.8rem; font-weight: 700; color: var(--text-muted); text-transform: uppercase; margin-bottom: 0.4rem;">Full Name</label>
               <input type="text" id="prof-name" class="input-field" value="${user.name || ''}" required />
@@ -45,7 +45,7 @@ export function renderProfilePage({ currentUser, profileSavedMessage }) {
           <h3 style="font-size: 1.2rem; font-weight: 700; margin-bottom: 1rem; color: #7c3aed;">2. Fitness Stage & Primary Goal</h3>
           <div style="margin-bottom: 1.25rem;">
             <label style="display: block; font-size: 0.8rem; font-weight: 700; color: var(--text-muted); text-transform: uppercase; margin-bottom: 0.4rem;">Fitness Stage</label>
-            <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 0.6rem;">
+            <div class="profile-pill-grid-3">
               ${['Beginner', 'Intermediate', 'Advanced'].map(st => `
                 <button type="button" 
                         class="time-pill-btn ${user.fitnessStage === st ? 'selected' : ''}"
@@ -59,7 +59,7 @@ export function renderProfilePage({ currentUser, profileSavedMessage }) {
 
           <div>
             <label style="display: block; font-size: 0.8rem; font-weight: 700; color: var(--text-muted); text-transform: uppercase; margin-bottom: 0.4rem;">Main Goal</label>
-            <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 0.5rem;">
+            <div class="profile-pill-grid-2">
               ${['Stay Active', 'Build Strength', 'Improve Fitness', 'Lose Weight', 'General Wellness', 'Flexibility', 'Endurance', 'Mobility', 'Improve Energy', 'Reduce Sedentary Time'].map(g => `
                 <button type="button" 
                         class="time-pill-btn ${user.goal === g ? 'selected' : ''}"
@@ -77,7 +77,7 @@ export function renderProfilePage({ currentUser, profileSavedMessage }) {
           <h3 style="font-size: 1.2rem; font-weight: 700; margin-bottom: 1rem; color: #7c3aed;">3. Schedule & Activity Level</h3>
           <div style="margin-bottom: 1.25rem;">
             <label style="display: block; font-size: 0.8rem; font-weight: 700; color: var(--text-muted); text-transform: uppercase; margin-bottom: 0.4rem;">Typical Available Free Time</label>
-            <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 0.5rem;">
+            <div class="profile-pill-grid-4">
               ${['5 minutes', '10 minutes', '15 minutes', '30+ minutes'].map(t => `
                 <button type="button" 
                         class="time-pill-btn ${user.availableTime === t ? 'selected' : ''}"
@@ -91,7 +91,7 @@ export function renderProfilePage({ currentUser, profileSavedMessage }) {
 
           <div style="margin-bottom: 1.25rem;">
             <label style="display: block; font-size: 0.8rem; font-weight: 700; color: var(--text-muted); text-transform: uppercase; margin-bottom: 0.4rem;">Preferred Time of Day</label>
-            <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 0.5rem;">
+            <div class="profile-pill-grid-4">
               ${['Morning', 'Afternoon', 'Evening', 'Custom'].map(time => `
                 <button type="button" 
                         class="time-pill-btn ${user.preferredTime === time ? 'selected' : ''}"
@@ -105,7 +105,7 @@ export function renderProfilePage({ currentUser, profileSavedMessage }) {
 
           <div>
             <label style="display: block; font-size: 0.8rem; font-weight: 700; color: var(--text-muted); text-transform: uppercase; margin-bottom: 0.4rem;">Activity Level</label>
-            <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 0.5rem;">
+            <div class="profile-pill-grid-2">
               ${['Sedentary', 'Lightly Active', 'Moderately Active', 'Very Active'].map(lvl => `
                 <button type="button" 
                         class="time-pill-btn ${user.activityLevel === lvl ? 'selected' : ''}"
@@ -123,7 +123,7 @@ export function renderProfilePage({ currentUser, profileSavedMessage }) {
           <h3 style="font-size: 1.2rem; font-weight: 700; margin-bottom: 1rem; color: #7c3aed;">4. Nutrition & Smart Reminders</h3>
           <div style="margin-bottom: 1.25rem;">
             <label style="display: block; font-size: 0.8rem; font-weight: 700; color: var(--text-muted); text-transform: uppercase; margin-bottom: 0.4rem;">Dietary Preference</label>
-            <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 0.5rem;">
+            <div class="profile-pill-grid-3">
               ${['Vegetarian', 'Non-Vegetarian', 'No Preference'].map(d => `
                 <button type="button" 
                         class="time-pill-btn ${user.dietaryPreference === d ? 'selected' : ''}"
@@ -137,7 +137,7 @@ export function renderProfilePage({ currentUser, profileSavedMessage }) {
 
           <div style="margin-bottom: 1.25rem;">
             <label style="display: block; font-size: 0.8rem; font-weight: 700; color: var(--text-muted); text-transform: uppercase; margin-bottom: 0.4rem;">Budget Friendly</label>
-            <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 0.5rem;">
+            <div class="profile-pill-grid-2">
               ${['Yes', 'No'].map(b => `
                 <button type="button" 
                         class="time-pill-btn ${(user.budgetFriendly || 'No') === b ? 'selected' : ''}"
@@ -165,7 +165,7 @@ export function renderProfilePage({ currentUser, profileSavedMessage }) {
         </div>
 
         <!-- Submit Button -->
-        <div style="display: flex; justify-content: flex-end; gap: 1rem; border-top: 1px solid var(--border-subtle); padding-top: 1.5rem; margin-top: 0.5rem;">
+        <div class="profile-submit-row" style="display: flex; justify-content: flex-end; gap: 1rem; border-top: 1px solid var(--border-subtle); padding-top: 1.5rem; margin-top: 0.5rem;">
           <button type="submit" class="btn btn-primary" id="btn-save-profile" style="min-width: 180px;">
             Save & Recalibrate Engine
           </button>

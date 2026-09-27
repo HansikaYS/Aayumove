@@ -352,19 +352,25 @@ h1, h2, h3, h4, h5 {
   bottom: 0;
   left: 0;
   right: 0;
-  height: 64px;
-  background: rgba(255, 255, 255, 0.95);
+  height: calc(64px + env(safe-area-inset-bottom, 0px));
+  padding-bottom: env(safe-area-inset-bottom, 0px);
+  background: rgba(255, 255, 255, 0.94);
   backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
   border-top: 1px solid var(--border-subtle);
+  box-shadow: 0 -4px 25px rgba(0, 0, 0, 0.06);
   z-index: 50;
-  padding: 0 0.5rem;
+  padding-left: 0.5rem;
+  padding-right: 0.5rem;
 }
 
 .mobile-nav-items {
   display: flex;
   justify-content: space-around;
   align-items: center;
-  height: 100%;
+  height: 64px;
+  max-width: 500px;
+  margin: 0 auto;
 }
 
 .mobile-nav-btn {
@@ -374,16 +380,38 @@ h1, h2, h3, h4, h5 {
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: center;
   gap: 3px;
-  font-size: 0.7rem;
+  font-size: 0.72rem;
   font-weight: 600;
+  font-family: var(--font-sans);
   cursor: pointer;
-  padding: 0.3rem;
+  padding: 0.4rem 0.65rem;
+  border-radius: var(--radius-md);
+  min-width: 52px;
+  min-height: 48px;
   transition: var(--transition-fast);
+  -webkit-tap-highlight-color: transparent;
+  user-select: none;
+}
+
+.mobile-nav-btn:active {
+  transform: scale(0.92);
+}
+
+.mobile-nav-btn svg {
+  transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1), stroke 0.2s ease;
 }
 
 .mobile-nav-btn.active {
   color: var(--primary);
+  background: var(--primary-light);
+  font-weight: 700;
+}
+
+.mobile-nav-btn.active svg {
+  transform: translateY(-1px) scale(1.1);
+  stroke: var(--primary);
 }
 
 /* ==========================================================================
@@ -825,7 +853,7 @@ h1, h2, h3, h4, h5 {
    ========================================================================== */
 .activities-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 280px), 1fr));
   gap: 1.5rem;
   margin-top: 1.5rem;
 }
@@ -940,7 +968,7 @@ h1, h2, h3, h4, h5 {
    ========================================================================== */
 .meals-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 280px), 1fr));
   gap: 1.5rem;
   margin-top: 1.5rem;
 }
@@ -1393,17 +1421,104 @@ h1, h2, h3, h4, h5 {
 }
 
 /* ==========================================================================
-   Responsive Breakpoints
+   Responsive Base Component Grid Classes
    ========================================================================== */
-@media (max-width: 960px) {
+.spotlight-recipe-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5rem;
+}
+
+.profile-identity-grid {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 1rem;
+}
+
+.profile-pill-grid-4 {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0.5rem;
+}
+
+.profile-pill-grid-3 {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0.6rem;
+}
+
+.profile-pill-grid-2 {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 0.5rem;
+}
+
+.profile-submit-row {
+  display: flex;
+  justify-content: flex-end;
+  gap: 1rem;
+  border-top: 1px solid var(--border-subtle);
+  padding-top: 1.5rem;
+  margin-top: 0.5rem;
+}
+
+.onboard-grid-4 {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0.5rem;
+}
+
+.onboard-grid-3 {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0.6rem;
+}
+
+.onboard-grid-2 {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 0.5rem;
+}
+
+.completed-stats-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+
+.smart-reminder-toast-container {
+  position: fixed;
+  bottom: 85px;
+  right: 1.5rem;
+  z-index: 80;
+  max-width: 380px;
+  width: 100%;
+  pointer-events: auto;
+}
+
+.smart-reminder-toast-card {
+  background: rgba(255, 255, 255, 0.97);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-lg);
+  padding: 1.1rem 1.25rem;
+  box-shadow: 0 15px 35px rgba(0,0,0,0.12), 0 0 20px rgba(0,0,0,0.04);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  animation: modalSlideUp 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* ==========================================================================
+   Comprehensive Responsive Breakpoints
+   ========================================================================== */
+@media (max-width: 1024px) {
   .dashboard-grid {
     grid-template-columns: 1fr;
+    gap: 1.5rem;
   }
   .progress-grid {
     grid-template-columns: 1fr;
-  }
-  .time-selector-grid {
-    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
   }
   .stats-grid {
     grid-template-columns: repeat(2, 1fr);
@@ -1411,6 +1526,13 @@ h1, h2, h3, h4, h5 {
 }
 
 @media (max-width: 768px) {
+  /* Layout & Navigation */
+  .navbar {
+    height: 62px;
+  }
+  .nav-inner {
+    height: 62px;
+  }
   .nav-links {
     display: none;
   }
@@ -1418,15 +1540,280 @@ h1, h2, h3, h4, h5 {
     display: block;
   }
   #root {
-    padding-bottom: 74px;
+    padding-bottom: calc(74px + env(safe-area-inset-bottom, 0px));
+  }
+  .container {
+    padding: 0 1rem;
+  }
+
+  /* Typography */
+  .hero-welcome-title {
+    font-size: clamp(1.5rem, 5.5vw, 2.1rem);
+  }
+  .hero-welcome-section p {
+    font-size: 0.92rem;
+  }
+
+  /* Key Stats */
+  .stats-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0.75rem;
+    margin-bottom: 1.5rem;
+  }
+  .stat-card {
+    padding: 1rem 0.85rem;
+  }
+  .stat-val {
+    font-size: clamp(1.25rem, 4vw, 1.55rem);
+  }
+
+  /* Adaptive Move Feature Card */
+  .adaptive-move-card {
+    padding: 1.35rem 1rem;
+    border-radius: var(--radius-lg);
+    margin-bottom: 1.75rem;
   }
   .adaptive-title {
-    font-size: 1.6rem;
+    font-size: clamp(1.35rem, 4.5vw, 1.8rem);
+  }
+  .adaptive-subtitle {
+    font-size: 0.88rem;
+  }
+  .time-selector-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0.6rem;
+  }
+  .time-pill-btn {
+    min-height: 56px;
+    padding: 0.75rem 0.5rem;
+  }
+  .time-pill-value {
+    font-size: 1.25rem;
   }
   .adaptive-recommendation-box {
     grid-template-columns: 1fr;
+    gap: 1.1rem;
+    padding: 1.15rem;
   }
+  .adaptive-recommendation-box div:last-child {
+    align-items: stretch !important;
+  }
+  .adaptive-recommendation-box div:last-child button {
+    width: 100%;
+    justify-content: center;
+    font-size: 0.95rem;
+    padding: 0.85rem 1.2rem;
+  }
+  .adaptive-recommendation-box div:last-child span {
+    text-align: center;
+  }
+
+  /* Reminder Banner */
+  .reminder-banner {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0.85rem;
+    padding: 1rem 1.15rem;
+  }
+  .reminder-banner button {
+    width: 100%;
+    justify-content: center;
+  }
+
+  /* Diet Page */
+  .spotlight-recipe-grid {
+    grid-template-columns: 1fr;
+    gap: 1.25rem;
+  }
+
+  /* Profile Page */
+  .profile-identity-grid {
+    grid-template-columns: 1fr;
+    gap: 0.75rem;
+  }
+  .profile-pill-grid-4 {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .profile-submit-row {
+    justify-content: stretch;
+  }
+  .profile-submit-row button {
+    width: 100%;
+  }
+
+  /* Onboarding Flow */
+  .onboard-grid-4 {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  /* Modals & Dialogs */
+  .modal-backdrop {
+    padding: 0.75rem;
+  }
+  .modal-card {
+    padding: 1.35rem 1rem;
+    border-radius: var(--radius-lg);
+    max-height: 92vh;
+    width: 100%;
+  }
+  .modal-close-btn {
+    top: 0.85rem;
+    right: 0.85rem;
+    width: 38px;
+    height: 38px;
+  }
+
+  /* Workout Player */
+  .timer-circle-wrap {
+    width: clamp(160px, 45vw, 200px);
+    height: clamp(160px, 45vw, 200px);
+    margin-bottom: 1rem;
+  }
+  .timer-digits {
+    font-size: clamp(2.6rem, 8vw, 3.5rem);
+  }
+  .timer-controls {
+    flex-wrap: wrap;
+    gap: 0.6rem;
+  }
+  .timer-controls .btn {
+    min-height: 48px;
+  }
+
+  /* AI Assistant Drawer */
   .ai-drawer {
     max-width: 100%;
+    height: 100%;
+    border-left: none;
+  }
+  .ai-drawer-header {
+    padding: 1rem 1.25rem;
+  }
+  .ai-chat-input-row {
+    padding: 0.75rem 1rem calc(0.75rem + env(safe-area-inset-bottom, 0px));
+  }
+  .chat-bubble {
+    max-width: 90%;
+  }
+
+  /* Smart Reminder Toast */
+  .smart-reminder-toast-container {
+    bottom: calc(74px + env(safe-area-inset-bottom, 0px));
+    left: 0.75rem;
+    right: 0.75rem;
+    max-width: none;
+    width: auto;
+  }
+  .smart-reminder-toast-card {
+    padding: 0.95rem 1rem;
   }
 }
+
+@media (max-width: 480px) {
+  /* Header Nav on Smartphone */
+  .brand-tagline-mini {
+    display: none;
+  }
+  .brand-title {
+    font-size: 1.2rem;
+  }
+  .brand-icon-box {
+    width: 36px;
+    height: 36px;
+  }
+  .nav-actions {
+    gap: 0.4rem;
+  }
+  .ai-pill-btn {
+    padding: 0.45rem;
+    width: 36px;
+    height: 36px;
+    justify-content: center;
+    border-radius: 50%;
+  }
+  .ai-pill-btn span {
+    display: none;
+  }
+  .user-name-label {
+    display: none;
+  }
+  .user-badge-dropdown {
+    padding: 2px;
+    border: none;
+    background: transparent;
+  }
+  .btn-nav-logout {
+    font-size: 0;
+    padding: 0.45rem;
+    width: 34px;
+    height: 34px;
+    border-radius: 50%;
+    justify-content: center;
+  }
+  .btn-nav-logout svg {
+    margin: 0;
+  }
+
+  /* Content Spacing */
+  .container {
+    padding: 0 0.85rem;
+  }
+
+  /* Filter Controls */
+  .filter-chip {
+    padding: 0.35rem 0.75rem;
+    font-size: 0.78rem;
+    min-height: 38px;
+    display: inline-flex;
+    align-items: center;
+  }
+
+  /* Grids */
+  .profile-pill-grid-3 {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .onboard-grid-3 {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .completed-stats-grid {
+    grid-template-columns: 1fr;
+    gap: 0.5rem;
+  }
+  .weekly-bars-container {
+    gap: 0.35rem;
+    height: 140px;
+  }
+  .bar-pill {
+    max-width: 30px;
+  }
+
+  /* Buttons */
+  .btn {
+    padding: 0.7rem 1.15rem;
+    font-size: 0.9rem;
+  }
+}
+
+@media (max-width: 360px) {
+  .profile-pill-grid-2,
+  .onboard-grid-2,
+  .time-selector-grid {
+    grid-template-columns: 1fr;
+  }
+  .stats-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 0.5rem;
+  }
+  .stat-val {
+    font-size: 1.15rem;
+  }
+  .stat-card {
+    padding: 0.75rem 0.5rem;
+  }
+  .mobile-nav-btn {
+    padding: 0.3rem 0.35rem;
+    min-width: 44px;
+    font-size: 0.65rem;
+  }
+}
+

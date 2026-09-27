@@ -61,7 +61,7 @@ export function renderDietPage({ currentUser, activeCategory = 'all', activeDiet
           🎯 <strong>Nutritional Purpose:</strong> ${spotlightMeal.nutritionalPurpose}
         </div>
 
-        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem;">
+        <div class="spotlight-recipe-grid">
           <div>
             <h4 style="font-size: 0.85rem; text-transform: uppercase; color: var(--text-muted); margin-bottom: 0.4rem; letter-spacing: 0.05em;">Ingredients</h4>
             <ul class="ingredients-list">
