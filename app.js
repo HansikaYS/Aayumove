@@ -80,10 +80,14 @@ class AayuApp {
         this.authModal = new AuthModal(
           storage,
           (user) => {
-            this.currentUser = user;
             this.authModal = null;
+            this.currentUser = user;
             this.aiAssistant.updateUser(user);
-            this.render();
+            if (!user.hasCompletedOnboarding) {
+              this.startOnboardingFlow(user.username, user.password);
+            } else {
+              this.navigate('dashboard');
+            }
           },
           (username, password) => {
             this.authModal = null;
@@ -313,8 +317,9 @@ class AayuApp {
     const user = storage.resetDemo();
     this.currentUser = user;
     this.authModal = null;
+    this.onboarding = null;
     this.aiAssistant.updateUser(user);
-    this.render();
+    this.navigate('dashboard');
   }
 
   setAuthMode(mode) {
@@ -342,15 +347,24 @@ class AayuApp {
   }
 
   startOnboardingFlow(username, password) {
+    this.authModal = null;
     this.onboarding = new OnboardingModal(username, password, (u, p, data) => {
-      const res = storage.register(u, p, data);
+      const existingUser = storage.getUsers().find(user => user.username.toLowerCase() === u.trim().toLowerCase());
+      let res;
+      if (existingUser) {
+        const updated = storage.updateProfile({ ...data, hasCompletedOnboarding: true });
+        res = { success: true, user: updated };
+      } else {
+        res = storage.register(u, p, { ...data, hasCompletedOnboarding: true });
+      }
+
       if (res.success) {
         this.currentUser = res.user;
         this.onboarding = null;
         this.aiAssistant.updateUser(res.user);
         this.navigate('dashboard');
       } else {
-        alert(res.error);
+        alert(res.error || 'Registration failed.');
       }
     });
     this.render();
@@ -361,6 +375,7 @@ class AayuApp {
     this.currentUser = null;
     this.authModal = null;
     this.onboarding = null;
+    this.currentTab = 'dashboard';
     this.render();
   }
 }

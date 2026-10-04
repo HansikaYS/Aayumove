@@ -18,7 +18,13 @@ export class AuthModal {
   }
 
   handleLogin(username, password) {
-    const res = this.storage.login(username, password);
+    const cleanUser = username ? username.trim() : '';
+    if (!cleanUser || !password) {
+      this.errorMsg = 'Please enter both username and password.';
+      this.renderError();
+      return;
+    }
+    const res = this.storage.login(cleanUser, password);
     if (!res.success) {
       this.errorMsg = res.error;
       this.renderError();
@@ -28,14 +34,31 @@ export class AuthModal {
   }
 
   handleSignup(username, password, confirmPassword) {
+    const cleanUsername = username ? username.trim().toLowerCase() : '';
+    if (!cleanUsername || cleanUsername.length < 3) {
+      this.errorMsg = 'Username must be at least 3 characters.';
+      this.renderError();
+      return;
+    }
+    if (!password || password.length < 4) {
+      this.errorMsg = 'Password must be at least 4 characters.';
+      this.renderError();
+      return;
+    }
     if (password !== confirmPassword) {
       this.errorMsg = 'Passwords do not match.';
       this.renderError();
       return;
     }
+    const users = this.storage.getUsers();
+    if (users.some(u => u.username.toLowerCase() === cleanUsername)) {
+      this.errorMsg = 'Username already taken. Please choose another.';
+      this.renderError();
+      return;
+    }
     // Pass user to onboarding flow with pre-set credentials
     if (this.onStartOnboarding) {
-      this.onStartOnboarding(username, password);
+      this.onStartOnboarding(cleanUsername, password);
     }
   }
 

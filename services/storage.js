@@ -11,6 +11,7 @@ const DEFAULT_DEMO_USER = {
   password: 'password123',
   name: 'Aarav Sharma',
   age: 20,
+  hasCompletedOnboarding: true,
   fitnessStage: 'Intermediate', // Beginner, Intermediate, Advanced
   goal: 'Stay Active', // Stay Active, Build Strength, Improve Fitness, Lose Weight, General Wellness, Flexibility, Endurance, Mobility, Improve Energy, Reduce Sedentary Time
   preferredActivities: ['Mobility & Stretching', 'HIIT', 'Calisthenics'],
@@ -91,11 +92,20 @@ class StorageService {
 
   init() {
     try {
+      // Ensure session is cleared so the app always opens to login page first
+      localStorage.removeItem(SESSION_KEY);
+
       const users = this.getUsers();
       if (!users || users.length === 0) {
         localStorage.setItem(USERS_KEY, JSON.stringify([DEFAULT_DEMO_USER]));
+      } else {
+        // Ensure demo user has hasCompletedOnboarding flag set
+        const demoIdx = users.findIndex(u => u.username === 'student');
+        if (demoIdx !== -1 && users[demoIdx].hasCompletedOnboarding === undefined) {
+          users[demoIdx].hasCompletedOnboarding = true;
+          this.saveUsers(users);
+        }
       }
-      // Always require explicit login/signup - no automatic session
     } catch (e) {
       console.warn('LocalStorage error in init:', e);
     }
@@ -199,6 +209,7 @@ class StorageService {
       remindersEnabled: true,
       reminderInterval: '2 hours',
       reminderPreferredTime: '15:00',
+      hasCompletedOnboarding: onboardingData.hasCompletedOnboarding !== undefined ? onboardingData.hasCompletedOnboarding : true,
       completedActivities: [],
       weeklyActivity: [
         { day: 'Mon', minutes: 0, completed: false },
@@ -297,8 +308,16 @@ class StorageService {
   }
 
   resetDemo() {
-    this.setCurrentUser(DEFAULT_DEMO_USER);
-    return DEFAULT_DEMO_USER;
+    const users = this.getUsers();
+    let demoUser = users.find(u => u.username === 'student');
+    if (!demoUser) {
+      demoUser = { ...DEFAULT_DEMO_USER };
+      users.push(demoUser);
+      this.saveUsers(users);
+    }
+    demoUser.hasCompletedOnboarding = true;
+    this.setCurrentUser(demoUser);
+    return demoUser;
   }
 }
 
