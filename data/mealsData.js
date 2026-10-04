@@ -11,6 +11,7 @@ export const mealsData = [
     diet: 'Vegetarian',
     prepTime: '5 mins',
     caloriesEstimate: '~320 kcal',
+    image: 'https://images.unsplash.com/photo-1584776296944-ab6fb57b0bdd?w=700&auto=format&fit=crop&q=80',
     nutritionalPurpose: 'Slow-release complex carbs for steady lecture focus & morning satiety.',
     studentTip: 'Made using just an electric kettle in your dorm room! No stove required.',
     ingredients: [
@@ -33,6 +34,7 @@ export const mealsData = [
     diet: 'Eggetarian',
     prepTime: '8 mins',
     caloriesEstimate: '~360 kcal',
+    image: 'https://images.unsplash.com/photo-1525351484163-7529414344d8?w=700&auto=format&fit=crop&q=80',
     nutritionalPurpose: 'Complete amino acids and choline for memory retention and muscle repair.',
     studentTip: 'Super fast and budget-friendly for college students.',
     ingredients: [
@@ -55,6 +57,7 @@ export const mealsData = [
     diet: 'Vegan',
     prepTime: '4 mins',
     caloriesEstimate: '~240 kcal',
+    image: 'https://images.unsplash.com/photo-1540420773420-3366772f4999?w=700&auto=format&fit=crop&q=80',
     nutritionalPurpose: 'Micronutrient-dense plant protein and antioxidants with zero cooking.',
     studentTip: 'Buy pre-sprouted moong from local market or soak overnight in your dorm.',
     ingredients: [
@@ -76,6 +79,7 @@ export const mealsData = [
     diet: 'Vegetarian',
     prepTime: '3 mins',
     caloriesEstimate: '~290 kcal',
+    image: 'https://images.unsplash.com/photo-1628840042765-356cda07504e?w=700&auto=format&fit=crop&q=80',
     nutritionalPurpose: 'Pocket-friendly portable energy wrap for days you are rushing to 8 AM class.',
     studentTip: 'Use leftover mess chapati or whole wheat tortilla.',
     ingredients: [
@@ -99,6 +103,7 @@ export const mealsData = [
     diet: 'Vegetarian',
     prepTime: '12 mins',
     caloriesEstimate: '~440 kcal',
+    image: 'https://images.unsplash.com/photo-1546069901-ba9599a7e63c?w=700&auto=format&fit=crop&q=80',
     nutritionalPurpose: 'Balanced macro ratio (carbs, protein, healthy fats) to sustain afternoon labs.',
     studentTip: 'Paneer or firm tofu can be pan-seared in 4 minutes with basic pantry spices.',
     ingredients: [
@@ -120,6 +125,7 @@ export const mealsData = [
     diet: 'High-Protein Student',
     prepTime: '8 mins',
     caloriesEstimate: '~380 kcal',
+    image: 'https://images.unsplash.com/photo-1546833999-b9f581a1996d?w=700&auto=format&fit=crop&q=80',
     nutritionalPurpose: 'Doubles the protein of regular hostel dal without changing the mess menu.',
     studentTip: 'Keep a small pack of soya chunks in your room; boil in kettle for 5 mins!',
     ingredients: [
@@ -141,6 +147,7 @@ export const mealsData = [
     diet: 'Non-Vegetarian',
     prepTime: '10 mins',
     caloriesEstimate: '~420 kcal',
+    image: 'https://images.unsplash.com/photo-1626700051175-6818013e1d4f?w=700&auto=format&fit=crop&q=80',
     nutritionalPurpose: 'High lean protein for muscle repair and prolonged fullness during study blocks.',
     studentTip: 'Shredded chicken breast or canned chickpeas both work wonderfully.',
     ingredients: [
@@ -164,6 +171,7 @@ export const mealsData = [
     diet: 'Budget-Friendly',
     prepTime: '4 mins',
     caloriesEstimate: '~170 kcal',
+    image: 'https://images.unsplash.com/photo-1599490659213-e2b9527bd087?w=700&auto=format&fit=crop&q=80',
     nutritionalPurpose: 'Low-glycemic crunchy snack that satisfies midnight cravings without sleep disruption.',
     studentTip: 'Costs a fraction of potato chips and leaves you energized, not bloated.',
     ingredients: [
@@ -185,6 +193,7 @@ export const mealsData = [
     diet: 'Vegetarian',
     prepTime: '2 mins',
     caloriesEstimate: '~190 kcal',
+    image: 'https://images.unsplash.com/photo-1488477181946-6428a0291777?w=700&auto=format&fit=crop&q=80',
     nutritionalPurpose: 'Probiotics for gut health and tyrosine to support neurotransmitters during exam stress.',
     studentTip: 'Use simple fresh dahi (curd) readily available at any campus store.',
     ingredients: [
@@ -206,6 +215,7 @@ export const mealsData = [
     diet: 'Eggetarian',
     prepTime: '3 mins',
     caloriesEstimate: '~150 kcal',
+    image: 'https://images.unsplash.com/photo-1582169296194-e4d644c48063?w=700&auto=format&fit=crop&q=80',
     nutritionalPurpose: '12 grams of pure protein snack in 3 minutes to stop afternoon brain fog.',
     studentTip: 'Get boiled eggs from campus canteen or boil in dorm kettle.',
     ingredients: [
@@ -229,6 +239,7 @@ export const mealsData = [
     diet: 'Vegetarian',
     prepTime: '15 mins',
     caloriesEstimate: '~350 kcal',
+    image: 'https://images.unsplash.com/photo-1512621776951-a57141f2eefd?w=700&auto=format&fit=crop&q=80',
     nutritionalPurpose: 'Easy on digestive tract, promotes melatonin release for deep restorative sleep.',
     studentTip: 'Comforting student staple that prevents bedtime acid reflux.',
     ingredients: [
@@ -249,6 +260,7 @@ export const mealsData = [
     diet: 'High-Protein Student',
     prepTime: '10 mins',
     caloriesEstimate: '~410 kcal',
+    image: 'https://images.unsplash.com/photo-1565299585323-38d6b0865b47?w=700&auto=format&fit=crop&q=80',
     nutritionalPurpose: 'High casein/egg protein to repair muscles throughout the night while you sleep.',
     studentTip: 'Pair with raw cucumber and carrot sticks for hydration.',
     ingredients: [

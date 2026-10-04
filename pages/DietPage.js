@@ -40,13 +40,14 @@ export function renderDietPage({ currentUser, activeCategory = 'all', activeDiet
       </div>
 
       <!-- Spotlight Shuffler Banner -->
-      <div class="glass-card" style="background: linear-gradient(135deg, rgba(245, 158, 11, 0.12), rgba(234, 88, 12, 0.08)); border-color: rgba(245, 158, 11, 0.35); padding: 1.75rem; margin-bottom: 2.5rem;">
-        <div style="display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 1rem; margin-bottom: 1rem;">
+      <div class="glass-card spotlight-card" style="background: linear-gradient(135deg, rgba(245, 158, 11, 0.12), rgba(234, 88, 12, 0.08)); border-color: rgba(245, 158, 11, 0.35); padding: 1.75rem; margin-bottom: 2.5rem;">
+        <div style="display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 1rem; margin-bottom: 1.25rem;">
           <div>
-            <div style="display: flex; align-items: center; gap: 0.5rem; margin-bottom: 0.4rem;">
+            <div style="display: flex; align-items: center; gap: 0.5rem; margin-bottom: 0.4rem; flex-wrap: wrap;">
               <span class="badge badge-amber">✨ Featured Student Pick</span>
               <span class="badge badge-emerald">${spotlightMeal.category}</span>
               <span class="badge badge-cyan">${spotlightMeal.diet}</span>
+              <span class="badge badge-indigo">${spotlightMeal.prepTime}</span>
             </div>
             <h2 style="font-size: 1.6rem; font-weight: 800;">${spotlightMeal.title}</h2>
           </div>
@@ -57,24 +58,35 @@ export function renderDietPage({ currentUser, activeCategory = 'all', activeDiet
           </button>
         </div>
 
-        <div class="meal-purpose" style="margin-bottom: 1rem;">
-          🎯 <strong>Nutritional Purpose:</strong> ${spotlightMeal.nutritionalPurpose}
-        </div>
+        <div class="spotlight-main-layout">
+          ${spotlightMeal.image ? `
+            <div class="spotlight-image-container">
+              <img src="${spotlightMeal.image}" alt="${spotlightMeal.title}" class="spotlight-meal-img" loading="eager" />
+              <div class="spotlight-cal-badge">${spotlightMeal.caloriesEstimate}</div>
+            </div>
+          ` : ''}
 
-        <div class="spotlight-recipe-grid">
-          <div>
-            <h4 style="font-size: 0.85rem; text-transform: uppercase; color: var(--text-muted); margin-bottom: 0.4rem; letter-spacing: 0.05em;">Ingredients</h4>
-            <ul class="ingredients-list">
-              ${spotlightMeal.ingredients.map(i => `<li>${i}</li>`).join('')}
-            </ul>
-          </div>
-          <div>
-            <h4 style="font-size: 0.85rem; text-transform: uppercase; color: var(--text-muted); margin-bottom: 0.4rem; letter-spacing: 0.05em;">Student Prep Instructions</h4>
-            <ol style="font-size: 0.84rem; color: var(--text-muted); padding-left: 1.1rem; display: flex; flex-direction: column; gap: 0.35rem;">
-              ${spotlightMeal.instructions.map(step => `<li>${step}</li>`).join('')}
-            </ol>
-            <div class="meal-tip" style="margin-top: 0.75rem;">
-              💡 <strong>Hostel Tip:</strong> ${spotlightMeal.studentTip}
+          <div class="spotlight-details-container">
+            <div class="meal-purpose" style="margin-bottom: 1rem;">
+              🎯 <strong>Nutritional Purpose:</strong> ${spotlightMeal.nutritionalPurpose}
+            </div>
+
+            <div class="spotlight-recipe-grid">
+              <div>
+                <h4 style="font-size: 0.85rem; text-transform: uppercase; color: var(--text-muted); margin-bottom: 0.4rem; letter-spacing: 0.05em;">Ingredients</h4>
+                <ul class="ingredients-list">
+                  ${spotlightMeal.ingredients.map(i => `<li>${i}</li>`).join('')}
+                </ul>
+              </div>
+              <div>
+                <h4 style="font-size: 0.85rem; text-transform: uppercase; color: var(--text-muted); margin-bottom: 0.4rem; letter-spacing: 0.05em;">Student Prep Instructions</h4>
+                <ol style="font-size: 0.84rem; color: var(--text-muted); padding-left: 1.1rem; display: flex; flex-direction: column; gap: 0.35rem;">
+                  ${spotlightMeal.instructions.map(step => `<li>${step}</li>`).join('')}
+                </ol>
+                <div class="meal-tip" style="margin-top: 0.75rem;">
+                  💡 <strong>Hostel Tip:</strong> ${spotlightMeal.studentTip}
+                </div>
+              </div>
             </div>
           </div>
         </div>
@@ -122,27 +134,37 @@ export function renderDietPage({ currentUser, activeCategory = 'all', activeDiet
       <div class="meals-grid">
         ${filtered.map(meal => `
           <div class="meal-card">
-            <div>
-              <div class="meal-tag-row">
+            ${meal.image ? `
+              <div class="meal-card-image-wrap">
+                <img src="${meal.image}" alt="${meal.title}" class="meal-card-img" loading="lazy" />
+                <div class="meal-card-badges-overlay">
+                  <span class="badge badge-amber">${meal.category}</span>
+                  <span class="badge badge-cyan">${meal.prepTime}</span>
+                </div>
+              </div>
+            ` : `
+              <div class="meal-tag-row" style="padding: 1rem 1rem 0;">
                 <span class="badge badge-amber">${meal.category}</span>
                 <span class="badge badge-cyan">${meal.prepTime}</span>
               </div>
+            `}
 
+            <div class="meal-card-content">
               <h3 class="meal-title">${meal.title}</h3>
               <div class="meal-purpose">${meal.nutritionalPurpose}</div>
 
-              <div style="font-size: 0.82rem; color: var(--text-muted); margin-bottom: 0.75rem;">
+              <div style="font-size: 0.82rem; color: var(--text-muted); margin-bottom: 0.6rem;">
                 <strong>Ingredients:</strong> ${meal.ingredients.slice(0, 3).join(', ')}${meal.ingredients.length > 3 ? '...' : ''}
               </div>
 
-              <div class="meal-tip">
+              <div class="meal-tip" style="margin-bottom: 0.75rem;">
                 💡 ${meal.studentTip}
               </div>
-            </div>
 
-            <div style="border-top: 1px solid var(--border-subtle); padding-top: 0.75rem; display: flex; align-items: center; justify-content: space-between;">
-              <span class="badge badge-indigo">${meal.diet}</span>
-              <span style="font-size: 0.8rem; color: var(--text-muted); font-weight: 700;">${meal.caloriesEstimate}</span>
+              <div class="meal-card-footer">
+                <span class="badge badge-indigo">${meal.diet}</span>
+                <span class="meal-cal-val">${meal.caloriesEstimate}</span>
+              </div>
             </div>
           </div>
         `).join('')}

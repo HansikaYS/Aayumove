@@ -1340,6 +1340,392 @@ h1, h2, h3, h4, h5 {
 }
 
 /* ==========================================================================
+   Workout Exercise Form Animations & Demonstration Visuals
+   ========================================================================== */
+.exercise-anim-container {
+  background: #0f172a;
+  border: 1px solid rgba(249, 115, 22, 0.25);
+  border-radius: var(--radius-lg);
+  padding: 0.85rem;
+  margin-bottom: 1.25rem;
+  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.25), 0 8px 10px -6px rgba(0, 0, 0, 0.2);
+  overflow: hidden;
+}
+
+.exercise-anim-top-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 0.6rem;
+  padding: 0 0.25rem;
+}
+
+.exercise-anim-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  background: rgba(249, 115, 22, 0.15);
+  border: 1px solid rgba(249, 115, 22, 0.35);
+  color: #fb923c;
+  font-size: 0.72rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  padding: 0.2rem 0.6rem;
+  border-radius: 999px;
+}
+
+.exercise-anim-step-title {
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: #94a3b8;
+}
+
+.pulse-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #f97316;
+  box-shadow: 0 0 8px #f97316;
+  animation: pulseDot 1.4s ease-in-out infinite;
+}
+
+@keyframes pulseDot {
+  0%, 100% { transform: scale(1); opacity: 1; }
+  50% { transform: scale(1.5); opacity: 0.5; }
+}
+
+.exercise-anim-visual {
+  width: 100%;
+  height: 155px;
+  background: linear-gradient(180deg, #1e293b 0%, #0f172a 100%);
+  border-radius: var(--radius-md);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.exercise-svg-canvas {
+  width: 100%;
+  height: 100%;
+  max-height: 155px;
+}
+
+.anim-cue-text {
+  font-family: var(--font-sans);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  fill: #38bdf8;
+  text-shadow: 0 1px 3px rgba(0,0,0,0.5);
+}
+
+/* Biomechanical Keyframe Animations for Exercise SVG */
+.anim-pushup .pushup-body-group {
+  animation: pushupMotion 2.4s ease-in-out infinite alternate;
+  transform-origin: 236px 138px;
+}
+
+@keyframes pushupMotion {
+  0% { transform: rotate(0deg); }
+  50% { transform: rotate(-14deg); }
+  100% { transform: rotate(0deg); }
+}
+
+.anim-pushup .pushup-arm {
+  animation: pushupArmFlex 2.4s ease-in-out infinite alternate;
+}
+@keyframes pushupArmFlex {
+  0% { stroke-width: 8; opacity: 1; }
+  50% { stroke-width: 10; opacity: 0.9; }
+  100% { stroke-width: 8; opacity: 1; }
+}
+
+.anim-squat .squat-body-group {
+  animation: squatMotion 2.6s ease-in-out infinite alternate;
+  transform-origin: 160px 145px;
+}
+
+@keyframes squatMotion {
+  0% { transform: translateY(0) scaleY(1); }
+  45% { transform: translateY(28px) scaleY(0.82); }
+  100% { transform: translateY(0) scaleY(1); }
+}
+
+.anim-lunge .lunge-body-group {
+  animation: lungeMotion 2.8s ease-in-out infinite alternate;
+}
+
+@keyframes lungeMotion {
+  0% { transform: translateY(0); }
+  50% { transform: translateY(18px); }
+  100% { transform: translateY(0); }
+}
+
+.anim-climber .climber-knee-left {
+  animation: climberDriveLeft 1.2s ease-in-out infinite alternate;
+}
+.anim-climber .climber-knee-right {
+  animation: climberDriveRight 1.2s ease-in-out infinite alternate;
+}
+
+@keyframes climberDriveLeft {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(25px) translateY(-10px); }
+}
+@keyframes climberDriveRight {
+  0% { transform: translateX(25px) translateY(-10px); }
+  100% { transform: translateX(0); }
+}
+
+.anim-crunch .crunch-head,
+.anim-crunch .crunch-torso {
+  animation: crunchCurl 2.2s ease-in-out infinite alternate;
+  transform-origin: 160px 130px;
+}
+
+@keyframes crunchCurl {
+  0% { transform: rotate(0deg); }
+  50% { transform: rotate(18deg); }
+  100% { transform: rotate(0deg); }
+}
+
+.anim-bridge .crunch-torso {
+  animation: bridgeThrust 2.4s ease-in-out infinite alternate;
+  transform-origin: 75px 130px;
+}
+
+@keyframes bridgeThrust {
+  0% { transform: rotate(0deg); }
+  50% { transform: rotate(-16deg); }
+  100% { transform: rotate(0deg); }
+}
+
+.anim-cardio-jack .cardio-arm-l {
+  animation: jackArmL 1.4s ease-in-out infinite alternate;
+  transform-origin: 140px 55px;
+}
+.anim-cardio-jack .cardio-arm-r {
+  animation: jackArmR 1.4s ease-in-out infinite alternate;
+  transform-origin: 140px 55px;
+}
+.anim-cardio-jack .cardio-leg-l {
+  animation: jackLegL 1.4s ease-in-out infinite alternate;
+  transform-origin: 140px 95px;
+}
+.anim-cardio-jack .cardio-leg-r {
+  animation: jackLegR 1.4s ease-in-out infinite alternate;
+  transform-origin: 140px 95px;
+}
+
+@keyframes jackArmL {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(-50deg); }
+}
+@keyframes jackArmR {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(50deg); }
+}
+@keyframes jackLegL {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(-25deg); }
+}
+@keyframes jackLegR {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(25deg); }
+}
+
+.anim-boxing .boxing-punch-arm {
+  animation: boxPunch 1.1s ease-in-out infinite alternate;
+  transform-origin: 125px 60px;
+}
+@keyframes boxPunch {
+  0% { transform: scaleX(0.7); }
+  100% { transform: scaleX(1.15); }
+}
+
+.anim-yoga .yoga-body-group {
+  animation: yogaFloat 3.6s ease-in-out infinite alternate;
+}
+@keyframes yogaFloat {
+  0% { transform: translateY(0); }
+  50% { transform: translateY(-4px); }
+  100% { transform: translateY(0); }
+}
+
+.anim-breath-wave {
+  animation: breathPulse 3.6s ease-in-out infinite alternate;
+}
+@keyframes breathPulse {
+  0% { opacity: 0.3; stroke-width: 1.5; }
+  100% { opacity: 0.9; stroke-width: 3.5; }
+}
+
+.anim-head-roll {
+  animation: headRoll 3s ease-in-out infinite alternate;
+  transform-origin: 130px 48px;
+}
+@keyframes headRoll {
+  0% { transform: rotate(-15deg); }
+  100% { transform: rotate(15deg); }
+}
+
+.exercise-gif-wrap {
+  width: 100%;
+  height: 155px;
+  background: #020617;
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.exercise-gif-img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+/* ==========================================================================
+   Diet Page Food Image Presentation
+   ========================================================================== */
+.spotlight-main-layout {
+  display: grid;
+  grid-template-columns: 280px 1fr;
+  gap: 1.5rem;
+  align-items: center;
+}
+
+.spotlight-image-container {
+  position: relative;
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  height: 220px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
+  border: 1px solid rgba(245, 158, 11, 0.3);
+}
+
+.spotlight-meal-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.4s ease;
+}
+
+.spotlight-image-container:hover .spotlight-meal-img {
+  transform: scale(1.04);
+}
+
+.spotlight-cal-badge {
+  position: absolute;
+  bottom: 0.75rem;
+  right: 0.75rem;
+  background: rgba(15, 23, 42, 0.85);
+  backdrop-filter: blur(8px);
+  color: #fbbf24;
+  font-size: 0.82rem;
+  font-weight: 700;
+  padding: 0.3rem 0.65rem;
+  border-radius: var(--radius-sm);
+  border: 1px solid rgba(245, 158, 11, 0.4);
+}
+
+.meals-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 1.5rem;
+  margin-top: 1.5rem;
+}
+
+.meal-card {
+  background: var(--bg-card);
+  backdrop-filter: blur(16px);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  box-shadow: var(--shadow-sm);
+  transition: transform var(--transition-normal), box-shadow var(--transition-normal), border-color var(--transition-normal);
+}
+
+.meal-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-md);
+  border-color: rgba(245, 158, 11, 0.4);
+}
+
+.meal-card-image-wrap {
+  position: relative;
+  width: 100%;
+  height: 175px;
+  overflow: hidden;
+  background: #1e293b;
+}
+
+.meal-card-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.45s ease;
+}
+
+.meal-card:hover .meal-card-img {
+  transform: scale(1.06);
+}
+
+.meal-card-badges-overlay {
+  position: absolute;
+  top: 0.65rem;
+  left: 0.65rem;
+  right: 0.65rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  pointer-events: none;
+}
+
+.meal-card-badges-overlay .badge {
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.25);
+  backdrop-filter: blur(6px);
+}
+
+.meal-card-content {
+  padding: 1.15rem 1.25rem 1.25rem;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+.meal-card-footer {
+  margin-top: auto;
+  border-top: 1px solid var(--border-subtle);
+  padding-top: 0.75rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.meal-cal-val {
+  font-size: 0.84rem;
+  font-weight: 700;
+  color: var(--accent-orange);
+}
+
+@media (max-width: 768px) {
+  .spotlight-main-layout {
+    grid-template-columns: 1fr;
+  }
+  .spotlight-image-container {
+    height: 190px;
+  }
+}
+
+/* ==========================================================================
    Hydration Reminder Card
    ========================================================================== */
 .hydration-card {

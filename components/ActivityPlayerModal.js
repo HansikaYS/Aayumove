@@ -1,6 +1,8 @@
 // AayuMove Interactive Activity Player Modal
 // Features live countdown timer, play/pause/reset, step progression, audio synth cues,
-// REST TIMER between exercises, and progress logging.
+// REST TIMER between exercises, animated exercise form guides, and progress logging.
+
+import { getExerciseAnimationHtml } from '../services/exerciseAnimations.js';
 
 export class ActivityPlayerModal {
   constructor(activity, onComplete, onClose) {
@@ -387,16 +389,27 @@ export class ActivityPlayerModal {
       </div>
 
       <!-- Step Progress Track -->
-      <div style="background: rgba(0,0,0,0.05); height: 6px; border-radius: 3px; overflow: hidden; margin-bottom: 1.5rem;">
+      <div style="background: rgba(0,0,0,0.05); height: 6px; border-radius: 3px; overflow: hidden; margin-bottom: 1.25rem;">
         <div id="player-step-progress-bar" style="height: 100%; width: 0%; background: linear-gradient(90deg, #f97316, #14b8a6); transition: width 0.3s ease;"></div>
+      </div>
+
+      <!-- Exercise Animation Guide Demo -->
+      <div class="exercise-anim-container">
+        <div class="exercise-anim-top-bar">
+          <span class="exercise-anim-badge">
+            <span class="pulse-dot"></span> Form Animation Guide
+          </span>
+          <span class="exercise-anim-step-title">Step ${this.currentStepIdx + 1} of ${this.totalSteps}</span>
+        </div>
+        ${curr.gifUrl ? `
+          <div class="exercise-gif-wrap">
+            <img src="${curr.gifUrl}" alt="${curr.name}" class="exercise-gif-img" />
+          </div>
+        ` : getExerciseAnimationHtml(curr.name, this.activity.category, curr.tips)}
       </div>
 
       <!-- Timer Presentation -->
       <div class="timer-display-box">
-        <span class="badge badge-indigo" id="player-step-counter" style="margin-bottom: 1rem;">
-          Step ${this.currentStepIdx + 1} of ${this.totalSteps}
-        </span>
-
         <div class="timer-circle-wrap">
           <div class="timer-digits" id="player-time-digits">${this.formatTime(this.stepSecondsLeft)}</div>
         </div>
