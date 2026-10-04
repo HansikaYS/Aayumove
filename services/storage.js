@@ -21,7 +21,7 @@ const DEFAULT_DEMO_USER = {
   dietaryPreference: 'Vegetarian', // Vegetarian, Non-Vegetarian, No Preference
   budgetFriendly: 'No', // Yes, No
   wellnessPreferences: ['Stress relief', 'Posture reset', 'Focus boost'],
-  streakDays: 5,
+  consistencyScore: 5,
   totalActiveMinutes: 145,
   totalWorkoutsCompleted: 14,
   remindersEnabled: true,
@@ -35,7 +35,8 @@ const DEFAULT_DEMO_USER = {
       duration: 10,
       calories: 68,
       timestamp: new Date(Date.now() - 86400000 * 4).toISOString(),
-      dateStr: '4 days ago'
+      dateStr: '4 days ago',
+      status: 'Completed'
     },
     {
       id: 'log-2',
@@ -44,7 +45,8 @@ const DEFAULT_DEMO_USER = {
       duration: 5,
       calories: 18,
       timestamp: new Date(Date.now() - 86400000 * 3).toISOString(),
-      dateStr: '3 days ago'
+      dateStr: '3 days ago',
+      status: 'Completed'
     },
     {
       id: 'log-3',
@@ -53,7 +55,8 @@ const DEFAULT_DEMO_USER = {
       duration: 15,
       calories: 120,
       timestamp: new Date(Date.now() - 86400000 * 2).toISOString(),
-      dateStr: '2 days ago'
+      dateStr: '2 days ago',
+      status: 'Completed'
     },
     {
       id: 'log-4',
@@ -62,7 +65,8 @@ const DEFAULT_DEMO_USER = {
       duration: 10,
       calories: 95,
       timestamp: new Date(Date.now() - 86400000 * 1).toISOString(),
-      dateStr: 'Yesterday'
+      dateStr: 'Yesterday',
+      status: 'Completed'
     },
     {
       id: 'log-5',
@@ -71,7 +75,8 @@ const DEFAULT_DEMO_USER = {
       duration: 5,
       calories: 35,
       timestamp: new Date(Date.now() - 3600000 * 3).toISOString(),
-      dateStr: 'Today'
+      dateStr: 'Today',
+      status: 'Completed'
     }
   ],
   weeklyActivity: [
@@ -99,10 +104,19 @@ class StorageService {
       if (!users || users.length === 0) {
         localStorage.setItem(USERS_KEY, JSON.stringify([DEFAULT_DEMO_USER]));
       } else {
-        // Ensure demo user has hasCompletedOnboarding flag set
-        const demoIdx = users.findIndex(u => u.username === 'student');
-        if (demoIdx !== -1 && users[demoIdx].hasCompletedOnboarding === undefined) {
-          users[demoIdx].hasCompletedOnboarding = true;
+        let changed = false;
+        users.forEach(u => {
+          if (u.consistencyScore === undefined) {
+            u.consistencyScore = u.streakDays !== undefined ? u.streakDays : 0;
+            delete u.streakDays;
+            changed = true;
+          }
+          if (u.username === 'student' && u.hasCompletedOnboarding === undefined) {
+            u.hasCompletedOnboarding = true;
+            changed = true;
+          }
+        });
+        if (changed) {
           this.saveUsers(users);
         }
       }
@@ -203,7 +217,7 @@ class StorageService {
       dietaryPreference: onboardingData.dietaryPreference || 'Vegetarian',
       budgetFriendly: onboardingData.budgetFriendly || 'No',
       wellnessPreferences: onboardingData.wellnessPreferences || ['Stress relief'],
-      streakDays: 1,
+      consistencyScore: onboardingData.consistencyScore || 0,
       totalActiveMinutes: 0,
       totalWorkoutsCompleted: 0,
       remindersEnabled: true,
@@ -237,9 +251,12 @@ class StorageService {
     return updatedUser;
   }
 
-  logCompletedWorkout(activity, minutesElapsed = null) {
+  logCompletedWorkout(activity, minutesElapsed = null, workoutResult = { isCompleted: true, exercises: [] }) {
     const user = this.getCurrentUser();
     if (!user) return null;
+
+    const isCompleted = workoutResult && workoutResult.isCompleted === true;
+    const exercises = workoutResult && Array.isArray(workoutResult.exercises) ? workoutResult.exercises : [];
 
     const duration = minutesElapsed !== null ? minutesElapsed : activity.duration;
     const calories = activity.burnedCalories || Math.round(duration * 6.5);
@@ -251,56 +268,49 @@ class StorageService {
       duration: duration,
       calories: calories,
       timestamp: new Date().toISOString(),
-      dateStr: 'Just now'
+      dateStr: 'Just now',
+      status: isCompleted ? 'Completed' : 'Incomplete',
+      exercises: exercises
     };
 
     const newCompleted = [logEntry, ...(user.completedActivities || [])];
     const newTotalMinutes = (user.totalActiveMinutes || 0) + duration;
-    const newTotalCount = (user.totalWorkoutsCompleted || 0) + 1;
     
-    // Fix streak: count unique calendar days only
-    // Multiple workouts on the same day = 1 streak day
-    const allLogs = [logEntry, ...(user.completedActivities || [])];
-    const uniqueDates = [...new Set(allLogs.map(log => {
-      const d = new Date(log.timestamp);
-      return `${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,'0')}-${String(d.getDate()).padStart(2,'0')}`;
-    }))].sort().reverse(); // most recent first
-
-    // Count consecutive streak days backwards from today
-    let newStreak = 0;
-    const today = new Date();
-    for (let i = 0; i < uniqueDates.length; i++) {
-      const checkDate = new Date(today);
-      checkDate.setDate(checkDate.getDate() - i);
-      const checkStr = `${checkDate.getFullYear()}-${String(checkDate.getMonth()+1).padStart(2,'0')}-${String(checkDate.getDate()).padStart(2,'0')}`;
-      if (uniqueDates.includes(checkStr)) {
-        newStreak++;
-      } else {
-        break;
-      }
-    }
+    // Increase Consistency Score and total completed workouts ONLY if genuinely completed
+    const newConsistencyScore = isCompleted 
+      ? (user.consistencyScore || 0) + 1 
+      : (user.consistencyScore || 0);
+      
+    const newTotalCount = isCompleted 
+      ? (user.totalWorkoutsCompleted || 0) + 1 
+      : (user.totalWorkoutsCompleted || 0);
 
     // Update today's entry in weeklyActivity
     const dayNames = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
     const todayName = dayNames[new Date().getDay()];
     const newWeekly = (user.weeklyActivity || []).map(w => {
       if (w.day === todayName) {
-        return { ...w, minutes: w.minutes + duration, completed: true };
+        return { 
+          ...w, 
+          minutes: w.minutes + duration, 
+          completed: isCompleted ? true : w.completed 
+        };
       }
       return w;
     });
 
     const updatedUser = {
       ...user,
-      streakDays: newStreak,
+      consistencyScore: newConsistencyScore,
       totalActiveMinutes: newTotalMinutes,
       totalWorkoutsCompleted: newTotalCount,
       completedActivities: newCompleted,
       weeklyActivity: newWeekly
     };
+    delete updatedUser.streakDays;
 
     this.setCurrentUser(updatedUser);
-    return { user: updatedUser, logEntry };
+    return { user: updatedUser, logEntry, isCompleted };
   }
 
   toggleReminders(enabled) {

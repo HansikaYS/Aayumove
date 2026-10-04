@@ -192,8 +192,8 @@ class AayuApp {
 
     this.activePlayer = new ActivityPlayerModal(
       act,
-      (completedAct, mins) => {
-        storage.logCompletedWorkout(completedAct, mins);
+      (completedAct, mins, resultOptions) => {
+        storage.logCompletedWorkout(completedAct, mins, resultOptions);
         this.currentUser = storage.getCurrentUser();
         this.aiAssistant.updateUser(this.currentUser);
       },

@@ -14,7 +14,7 @@ export class AayuAIService {
     const goal = user?.goal || 'stay healthy and energised';
     const time = user?.availableTime || '10 minutes';
     const stage = user?.fitnessStage || 'Beginner';
-    const streak = user?.streakDays || 1;
+    const consistencyScore = user?.consistencyScore || 0;
 
     const hour = new Date().getHours();
     let timeGreeting = 'Hey';
@@ -27,7 +27,7 @@ export class AayuAIService {
 🎯 **Your Current Profile:**
 - Goal: **${goal}** (${stage} level)
 - Available slot: **${time}** between classes
-- Streak: **🔥 ${streak} day${streak > 1 ? 's' : ''}**
+- Consistency Score: **⚡ ${consistencyScore} pts**
 
 What can I help you with right now? Ask me about **dorm workouts**, **hostel diet & protein**, **hydration targets**, **desk posture**, **exam stress**, or **late-night study routines**!`;
   }
@@ -43,9 +43,10 @@ What can I help you with right now? Ask me about **dorm workouts**, **hostel die
       `⚡ ${time} dorm workout for my goal`,
       '💧 How much water should I drink today?',
       '🥗 High-protein student snacks on a budget',
+      '🎯 How is my consistency score calculated?',
       '🧘 Fix stiff neck & shoulders from laptop',
       '🌙 Wind-down routine for late-night study',
-      '🎯 Quick motivation to keep my streak alive'
+      '🎯 Quick motivation to keep moving'
     ];
 
     if (goal.includes('strength') || goal.includes('muscle')) {
@@ -76,7 +77,7 @@ What can I help you with right now? Ask me about **dorm workouts**, **hostel die
     const goal = user?.goal || 'Stay Active';
     const diet = user?.dietaryPreference || 'Vegetarian';
     const availableTime = user?.availableTime || '10 minutes';
-    const streak = user?.streakDays || 1;
+    const consistencyScore = user?.consistencyScore || 0;
     const workoutsCount = user?.totalWorkoutsCompleted || 0;
     const activeMins = user?.totalActiveMinutes || 0;
 
@@ -97,7 +98,8 @@ What can I help you with right now? Ask me about **dorm workouts**, **hostel die
 
     // 1. User Profile & Stats intent
     const hasProfileIntent =
-      (prompt.includes('streak') && (prompt.includes('my') || prompt.includes('current') || prompt.includes('how many') || prompt.includes('what is'))) ||
+      prompt.includes('consistency') ||
+      prompt.includes('score') ||
       (prompt.includes('goal') && (prompt.includes('my') || prompt.includes('current') || prompt.includes('what is') || prompt.includes('fitness goal'))) ||
       prompt.includes('my stat') ||
       prompt.includes('my profile') ||
@@ -109,7 +111,7 @@ What can I help you with right now? Ask me about **dorm workouts**, **hostel die
       return {
         text: `Here is your current student fitness snapshot, **${name}**! 📊
 
-🔥 **Streak:** **${streak} Consecutive Days**
+⚡ **Consistency Score:** **${consistencyScore} Points** (Earned from fully completed routines)
 🏋️ **Workouts Completed:** **${workoutsCount} sessions**
 ⏱️ **Total Active Time:** **${activeMins} minutes**
 🎯 **Fitness Goal:** **${goal}**
@@ -117,9 +119,9 @@ What can I help you with right now? Ask me about **dorm workouts**, **hostel die
 🥗 **Dietary Preference:** **${diet}**
 ⏳ **Typical Available Window:** **${availableTime}**
 
-You're making steady, sustainable progress. Ready to log another active session today?`,
+You earn +1 Consistency Score every time you genuinely complete a full workout without skipping any exercises. Ready to log another active session today?`,
         actionLabel: 'View Detailed Progress & Stats',
-        actionNavigate: 'stats'
+        actionNavigate: 'progress'
       };
     }
 
@@ -530,7 +532,7 @@ ${proteinSources}
 ⚡ **The 2-Minute Fitness Rule for Students:**
 > *"Tell yourself you're only going to do 2 minutes of stretching or 10 bodyweight squats."*
 
-Once you start moving, dopamine kicks in and the friction disappears. You already have a **🔥 ${streak}-day streak** going and **${workoutsCount} workouts logged** in AayuMove! Don't break the chain.
+Once you start moving, dopamine kicks in and the friction disappears. You already have a **⚡ Consistency Score of ${consistencyScore}** and **${workoutsCount} workouts logged** in AayuMove! Keep the momentum going.
 
 Give yourself just **one 5-minute session** today. Your future self during finals will thank you!`,
           actionLabel: 'Do a 5-Min Express Move',
@@ -687,7 +689,7 @@ Spikes your heart rate, torches calories, and floods your brain with fresh oxyge
 - **Calories Burned:** ~${matchedAct.burnedCalories} kcal
 - **Space Needed:** ${matchedAct.spaceNeeded}
 
-Consistency beats intensity every single time. Doing this ${matchedAct.duration}-min routine today keeps your **${streak}-day streak** glowing!`,
+Consistency beats intensity every single time. Completing this ${matchedAct.duration}-min routine today earns you **+1 to your Consistency Score**!`,
         actionLabel: `Start ${matchedAct.title}`,
         actionActivityId: matchedAct.id
       };

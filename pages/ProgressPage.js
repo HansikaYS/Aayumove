@@ -34,16 +34,16 @@ export function renderProgressPage({ currentUser }) {
         </p>
       </div>
 
-      <!-- Streak Hero Box -->
-      <div class="streak-hero-box" style="margin-bottom: 2rem;">
-        <div class="streak-flame-icon">🔥</div>
+      <!-- Consistency Score Hero Box -->
+      <div class="streak-hero-box" style="margin-bottom: 2rem; background: linear-gradient(135deg, rgba(245, 158, 11, 0.08), rgba(249, 115, 22, 0.06));">
+        <div class="streak-flame-icon">⚡</div>
         <div>
           <div style="display: flex; align-items: baseline; gap: 0.5rem; margin-bottom: 0.2rem;">
-            <span class="streak-number">${currentUser?.streakDays || 1}</span>
-            <span style="font-size: 1.25rem; font-weight: 700; color: #ea580c;">Day Move Streak!</span>
+            <span class="streak-number">${currentUser?.consistencyScore || 0}</span>
+            <span style="font-size: 1.25rem; font-weight: 700; color: #ea580c;">Consistency Score</span>
           </div>
           <p style="font-size: 0.9rem; color: #92400e;">
-            You are building unstoppable physical stamina for college and life. Keep the flame alive!
+            Earn +1 Consistency Score for every fully completed workout without skipped exercises. Keep your momentum going!
           </p>
         </div>
       </div>
@@ -106,7 +106,7 @@ export function renderProgressPage({ currentUser }) {
             </span>
             <div style="display: flex; gap: 0.5rem; flex-wrap: wrap;">
               <span class="badge badge-indigo">⚡ First Move Completed</span>
-              <span class="badge badge-amber">🔥 Consistency Streak</span>
+              <span class="badge badge-amber">⚡ Consistency Builder</span>
               <span class="badge badge-cyan">🧘 Posture Master</span>
             </div>
           </div>
@@ -116,7 +116,7 @@ export function renderProgressPage({ currentUser }) {
       <!-- Completed Activities Log -->
       <div class="glass-card">
         <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.25rem;">
-          <h3 style="font-size: 1.3rem;">Completed Activity History</h3>
+          <h3 style="font-size: 1.3rem;">Workout Activity History</h3>
           <span style="font-size: 0.84rem; color: var(--text-muted);">${completedList.length} total logged</span>
         </div>
 
@@ -126,14 +126,23 @@ export function renderProgressPage({ currentUser }) {
           </div>
         ` : `
           <div style="display: flex; flex-direction: column; gap: 0.75rem;">
-            ${completedList.map(item => `
+            ${completedList.map(item => {
+              const isCompleted = item.status !== 'Incomplete';
+              return `
               <div style="background: rgba(255, 255, 255, 0.03); border: 1px solid var(--border-subtle); border-radius: var(--radius-md); padding: 0.9rem 1.15rem; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 0.75rem;">
                 <div style="display: flex; align-items: center; gap: 0.85rem;">
-                  <div style="width: 36px; height: 36px; border-radius: 50%; background: rgba(16, 185, 129, 0.15); color: #34d399; display: flex; align-items: center; justify-content: center;">
-                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+                  <div style="width: 36px; height: 36px; border-radius: 50%; background: ${isCompleted ? 'rgba(16, 185, 129, 0.15)' : 'rgba(245, 158, 11, 0.15)'}; color: ${isCompleted ? '#34d399' : '#fbbf24'}; display: flex; align-items: center; justify-content: center;">
+                    ${isCompleted 
+                      ? `<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>`
+                      : `<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>`}
                   </div>
                   <div>
-                    <h4 style="font-size: 0.98rem; font-weight: 700;">${item.title}</h4>
+                    <div style="display: flex; align-items: center; gap: 0.5rem;">
+                      <h4 style="font-size: 0.98rem; font-weight: 700;">${item.title}</h4>
+                      <span class="badge ${isCompleted ? 'badge-emerald' : 'badge-amber'}" style="font-size: 0.7rem; padding: 0.15rem 0.5rem;">
+                        ${isCompleted ? 'Completed (+1 Score)' : 'Incomplete'}
+                      </span>
+                    </div>
                     <span style="font-size: 0.78rem; color: var(--text-subtle);">${item.dateStr || 'Recent'}</span>
                   </div>
                 </div>
@@ -143,7 +152,7 @@ export function renderProgressPage({ currentUser }) {
                   <span class="badge badge-amber">🔥 ~${item.calories} kcal</span>
                 </div>
               </div>
-            `).join('')}
+            `;}).join('')}
           </div>
         `}
       </div>

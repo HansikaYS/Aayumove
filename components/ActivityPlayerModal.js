@@ -8,6 +8,13 @@ export class ActivityPlayerModal {
     this.onComplete = onComplete;
     this.onClose = onClose;
 
+    this.exercises = activity.instructions.map((inst, idx) => ({
+      stepIndex: idx + 1,
+      name: inst.name,
+      durationSec: inst.durationSec || 60,
+      status: 'Incomplete' // 'Completed' | 'Skipped' | 'Incomplete'
+    }));
+
     this.currentStepIdx = 0;
     this.totalSteps = activity.instructions.length;
     this.stepSecondsLeft = activity.instructions[0]?.durationSec || 60;
@@ -93,7 +100,10 @@ export class ActivityPlayerModal {
           }
           this.updateTimeDigits();
         } else {
-          // Step finished
+          // Exercise step finished genuinely
+          if (this.exercises[this.currentStepIdx]) {
+            this.exercises[this.currentStepIdx].status = 'Completed';
+          }
           if (this.currentStepIdx < this.totalSteps - 1) {
             this.startRestTimer();
           } else {
@@ -136,6 +146,16 @@ export class ActivityPlayerModal {
       this.skipRest();
       return;
     }
+
+    // If skipping before duration is completed, mark exercise as Skipped
+    if (this.exercises[this.currentStepIdx]) {
+      if (this.stepSecondsLeft > 0) {
+        this.exercises[this.currentStepIdx].status = 'Skipped';
+      } else {
+        this.exercises[this.currentStepIdx].status = 'Completed';
+      }
+    }
+
     if (this.currentStepIdx < this.totalSteps - 1) {
       // If timer is running, go through rest; otherwise direct advance
       if (this.isRunning) {
@@ -168,13 +188,29 @@ export class ActivityPlayerModal {
   finishWorkout() {
     clearInterval(this.timerInterval);
     this.isRunning = false;
-    this.playCompletionChime();
+
+    // A workout is genuinely completed only if all exercises have status 'Completed'
+    const allCompleted = this.exercises.length > 0 && this.exercises.every(e => e.status === 'Completed');
+
+    if (allCompleted) {
+      this.playCompletionChime();
+    } else {
+      this.playBeep(330, 0.25, 'triangle');
+    }
 
     const actualMinutes = Math.max(1, Math.round(this.totalSecondsElapsed / 60) || this.activity.duration);
     if (this.onComplete) {
-      this.onComplete(this.activity, actualMinutes);
+      this.onComplete(this.activity, actualMinutes, {
+        isCompleted: allCompleted,
+        exercises: this.exercises
+      });
     }
-    this.renderCompletedState(actualMinutes);
+
+    if (allCompleted) {
+      this.renderCompletedState(actualMinutes);
+    } else {
+      this.renderIncompleteState(actualMinutes);
+    }
   }
 
   close() {
@@ -270,8 +306,58 @@ export class ActivityPlayerModal {
             <div style="font-size: 0.76rem; color: var(--text-muted);">Calories Burned</div>
           </div>
           <div style="background: rgba(0,0,0,0.03); border: 1px solid var(--border-subtle); border-radius: var(--radius-md); padding: 1rem;">
-            <div style="font-size: 1.6rem; font-weight: 800; color: #10b981;">🔥 +1</div>
-            <div style="font-size: 0.76rem; color: var(--text-muted);">Streak Maintained</div>
+            <div style="font-size: 1.6rem; font-weight: 800; color: #10b981;">⚡ +1</div>
+            <div style="font-size: 0.76rem; color: var(--text-muted);">Consistency Score</div>
+          </div>
+        </div>
+
+        <button class="btn btn-primary" id="player-btn-close-completed" onclick="window.AayuApp.closeModal(); window.AayuApp.navigate('dashboard');">
+          Return to Dashboard
+        </button>
+      </div>
+    `;
+  }
+
+  renderIncompleteState(minutesLogged) {
+    const content = document.getElementById('player-modal-content');
+    if (!content) return;
+
+    const completedCount = this.exercises.filter(e => e.status === 'Completed').length;
+    const skippedCount = this.exercises.filter(e => e.status === 'Skipped').length;
+
+    content.innerHTML = `
+      <div style="text-align: center; padding: 2rem 1rem;">
+        <div style="font-size: 3.5rem; margin-bottom: 0.5rem;">⚠️</div>
+        <span class="badge badge-amber" style="font-size: 0.88rem; margin-bottom: 1rem; padding: 0.35rem 1rem;">Workout Incomplete</span>
+        <h2 style="font-size: 1.8rem; margin-bottom: 0.5rem;">Exercises Were Skipped</h2>
+        <p style="color: var(--text-muted); max-width: 440px; margin: 0 auto 1.5rem; font-size: 0.92rem;">
+          To build genuine fitness and earn <strong>+1 Consistency Score</strong>, all exercises in the routine must be fully completed without skipping.
+        </p>
+
+        <div style="max-width: 440px; margin: 0 auto 1.5rem; text-align: left; background: rgba(0,0,0,0.03); border: 1px solid var(--border-subtle); border-radius: var(--radius-md); padding: 1rem 1.25rem;">
+          <div style="font-size: 0.82rem; font-weight: 700; text-transform: uppercase; color: var(--text-muted); margin-bottom: 0.75rem;">
+            Exercise Breakdown (${completedCount}/${this.totalSteps} Completed)
+          </div>
+          <div style="display: flex; flex-direction: column; gap: 0.5rem;">
+            ${this.exercises.map(e => `
+              <div style="display: flex; align-items: center; justify-content: space-between; font-size: 0.85rem;">
+                <span>${e.stepIndex}. ${e.name}</span>
+                <span class="badge ${e.status === 'Completed' ? 'badge-emerald' : 'badge-amber'}" style="font-size: 0.75rem;">
+                  ${e.status === 'Completed' ? '✔ Completed' : '⏭ Skipped'}
+                </span>
+              </div>
+            `).join('')}
+          </div>
+        </div>
+
+        <div class="completed-stats-grid" style="grid-template-columns: repeat(2, 1fr); max-width: 360px; margin: 0 auto 1.5rem;">
+          <div style="background: rgba(0,0,0,0.03); border: 1px solid var(--border-subtle); border-radius: var(--radius-md); padding: 0.9rem;">
+            <div style="font-size: 1.4rem; font-weight: 800; color: #0d9488;">+${minutesLogged}m</div>
+            <div style="font-size: 0.76rem; color: var(--text-muted);">Active Time</div>
+          </div>
+          <div style="background: rgba(0,0,0,0.03); border: 1px solid var(--border-subtle); border-radius: var(--radius-md); padding: 0.9rem;">
+            <div style="font-size: 1.4rem; font-weight: 800; color: #64748b;">+0</div>
+            <div style="font-size: 0.76rem; color: var(--text-muted);">Consistency Score</div>
           </div>
         </div>
 

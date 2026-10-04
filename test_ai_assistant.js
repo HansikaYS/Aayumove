@@ -7,7 +7,7 @@ const demoUser = {
   goal: 'Stay Active',
   dietaryPreference: 'Vegetarian',
   availableTime: '10 minutes',
-  streakDays: 5,
+  consistencyScore: 5,
   totalWorkoutsCompleted: 14,
   totalActiveMinutes: 145
 };
@@ -44,7 +44,7 @@ const testQuestions = [
   { category: 'Wellness', q: 'I feel lazy and want to procrastinate my workout today' },
 
   // Profile & Conversational
-  { category: 'Profile', q: 'What is my current streak and fitness goal in AayuMove?' },
+  { category: 'Profile', q: 'What is my current consistency score and fitness goal in AayuMove?' },
   { category: 'Conversational', q: 'Hey, who are you and how can you help me?' }
 ];
 

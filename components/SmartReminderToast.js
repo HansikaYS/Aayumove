@@ -77,7 +77,7 @@ export class SmartReminderManager {
       const workoutMsgs = [
         `Hey ${name}! You have ${availableTime} free between study blocks. Ready for a quick move?`,
         `Study posture check! 5 minutes away from your screen can recharge your concentration.`,
-        `Keep your ${user.streakDays || 1}-day streak shining! A quick micro-break is ready.`
+        `Keep your ${user.consistencyScore || 0} Consistency Score growing! A quick micro-break is ready.`
       ];
       chosenMsg = workoutMsgs[Math.floor(Math.random() * workoutMsgs.length)];
     }
