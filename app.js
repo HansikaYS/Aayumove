@@ -10,6 +10,7 @@ import { AayuAIAssistant } from './components/AayuAIAssistant.js';
 import { SmartReminderManager } from './components/SmartReminderToast.js';
 import { AuthModal } from './components/AuthModal.js';
 import { OnboardingModal } from './components/OnboardingModal.js';
+import { getExerciseAnimationHtml } from './services/exerciseAnimations.js';
 
 import { renderDashboardPage } from './pages/DashboardPage.js';
 import { renderActivitiesPage } from './pages/ActivitiesPage.js';
@@ -368,6 +369,27 @@ class AayuApp {
       }
     });
     this.render();
+  }
+
+  toggleExerciseVisualMode(visualId) {
+    if (!this.activePlayer) return;
+    const currStep = this.activePlayer.activity.instructions[this.activePlayer.currentStepIdx];
+    if (!currStep) return;
+    this.exerciseVisualMode = this.exerciseVisualMode === 'fallback' ? 'animated' : 'fallback';
+    const animContainer = document.querySelector('.exercise-anim-container');
+    if (animContainer) {
+      const isFallback = this.exerciseVisualMode === 'fallback';
+      const visualHtml = getExerciseAnimationHtml(currStep.name, this.activePlayer.activity.category, currStep.tips, { fallbackOnly: isFallback });
+      animContainer.innerHTML = `
+        <div class="exercise-anim-top-bar">
+          <span class="exercise-anim-badge">
+            <span class="pulse-dot"></span> ${isFallback ? 'Form Blueprint (Fallback Schematic)' : 'Biomechanical Motion Guide'}
+          </span>
+          <span class="exercise-anim-step-title">Step ${this.activePlayer.currentStepIdx + 1} of ${this.activePlayer.totalSteps}</span>
+        </div>
+        ${visualHtml}
+      `;
+    }
   }
 
   logout() {

@@ -1397,7 +1397,7 @@ h1, h2, h3, h4, h5 {
 
 .exercise-anim-visual {
   width: 100%;
-  height: 155px;
+  height: 165px;
   background: linear-gradient(180deg, #1e293b 0%, #0f172a 100%);
   border-radius: var(--radius-md);
   display: flex;
@@ -1405,13 +1405,13 @@ h1, h2, h3, h4, h5 {
   justify-content: center;
   position: relative;
   overflow: hidden;
-  border: 1px solid rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.08);
 }
 
 .exercise-svg-canvas {
   width: 100%;
   height: 100%;
-  max-height: 155px;
+  max-height: 165px;
 }
 
 .anim-cue-text {
@@ -1421,6 +1421,101 @@ h1, h2, h3, h4, h5 {
   letter-spacing: 0.05em;
   fill: #38bdf8;
   text-shadow: 0 1px 3px rgba(0,0,0,0.5);
+}
+
+/* Fallback Blueprint Toggle Button */
+.exercise-fallback-toggle-btn {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  background: rgba(15, 23, 42, 0.82);
+  backdrop-filter: blur(4px);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  color: #94a3b8;
+  font-size: 0.7rem;
+  font-weight: 600;
+  padding: 0.25rem 0.55rem;
+  border-radius: 6px;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  z-index: 5;
+}
+
+.exercise-fallback-toggle-btn:hover {
+  background: rgba(30, 41, 59, 0.95);
+  color: #f8fafc;
+  border-color: rgba(249, 115, 22, 0.4);
+}
+
+/* Form Meta Bar & Muscles Tags */
+.exercise-form-meta-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 0.65rem;
+  margin-bottom: 0.5rem;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.exercise-form-target-muscles {
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+  flex-wrap: wrap;
+}
+
+.muscle-pill-label {
+  font-size: 0.72rem;
+  font-weight: 700;
+  color: #94a3b8;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.muscle-tag {
+  background: rgba(13, 148, 136, 0.15);
+  border: 1px solid rgba(20, 184, 166, 0.3);
+  color: #2dd4bf;
+  font-size: 0.7rem;
+  font-weight: 600;
+  padding: 0.15rem 0.45rem;
+  border-radius: 4px;
+}
+
+.exercise-form-tempo-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  background: rgba(249, 115, 22, 0.12);
+  border: 1px solid rgba(249, 115, 22, 0.25);
+  color: #fb923c;
+  font-size: 0.7rem;
+  font-weight: 600;
+  padding: 0.15rem 0.55rem;
+  border-radius: 4px;
+}
+
+.exercise-form-cue-box {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.45rem;
+  background: rgba(30, 41, 59, 0.5);
+  border-left: 3px solid #f97316;
+  padding: 0.45rem 0.65rem;
+  border-radius: 0 4px 4px 0;
+  font-size: 0.76rem;
+  color: #cbd5e1;
+  line-height: 1.35;
+}
+
+.cue-bullet {
+  color: #f97316;
+  font-size: 0.8rem;
+  line-height: 1;
 }
 
 /* Biomechanical Keyframe Animations for Exercise SVG */
