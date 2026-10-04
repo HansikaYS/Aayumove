@@ -7,7 +7,7 @@ export const EXERCISE_PHOTO_REGISTRY = [
   {
     id: 'pushup-pike',
     name: 'Pike Push-Ups (Shoulder Builder)',
-    match: ['pike push-ups', 'pike push-up', 'pike'],
+    match: ['pike push-ups', 'pike push-up', 'pike pushup', 'pike'],
     photoPath: 'assets/photos/pushup-pike.jpg',
     targetMuscles: ['Anterior & Lateral Deltoids', 'Upper Trapezius', 'Triceps'],
     formCue: 'Hips held high in inverted V-shape • Lower crown of head toward floor in front of hands',
@@ -19,7 +19,7 @@ export const EXERCISE_PHOTO_REGISTRY = [
   {
     id: 'pushup-diamond',
     name: 'Diamond / Close-Grip Push-Ups',
-    match: ['diamond push-up', 'diamond pushups', 'diamond'],
+    match: ['diamond / standard push-up', 'diamond push-up', 'diamond pushups', 'diamond push up', 'diamond'],
     photoPath: 'assets/photos/pushup-diamond.jpg',
     targetMuscles: ['Triceps Brachii', 'Inner Pectorals', 'Anterior Deltoids'],
     formCue: 'Thumbs and index fingers touching in diamond shape • Tuck elbows tight against ribs',
@@ -31,7 +31,7 @@ export const EXERCISE_PHOTO_REGISTRY = [
   {
     id: 'pushup-wall',
     name: 'Wall Push-Ups to Arm Swings',
-    match: ['wall push-up', 'wall pushups', 'wall push'],
+    match: ['wall push-ups to arm swings', 'wall push-ups', 'wall push-up', 'wall pushups', 'wall push'],
     photoPath: 'assets/photos/pushup-wall.jpg',
     targetMuscles: ['Chest', 'Shoulders', 'Core Stabilizers'],
     formCue: 'Stand arm length from wall • Press chest to wall with core rigid and heels grounded',
@@ -43,7 +43,7 @@ export const EXERCISE_PHOTO_REGISTRY = [
   {
     id: 'pushup-deficit',
     name: 'Slow Tempo Deficit Push-Ups (Books/Blocks)',
-    match: ['deficit push-up', 'deficit pushups', 'books/blocks', 'deficit'],
+    match: ['slow tempo deficit push-ups', 'deficit push-ups', 'deficit push-up', 'deficit pushups', 'books/blocks', 'deficit'],
     photoPath: 'assets/photos/pushup-deficit.jpg',
     targetMuscles: ['Pectoralis Major Stretch', 'Anterior Deltoids', 'Triceps'],
     formCue: 'Place hands on elevated blocks for full chest stretch at bottom of rep',
@@ -55,7 +55,7 @@ export const EXERCISE_PHOTO_REGISTRY = [
   {
     id: 'pushup-standard',
     name: 'Push-Up Variations (Standard, Incline, Knee)',
-    match: ['push-up', 'pushups', 'push up', 'standard push-up', 'incline push-up', 'knee push-up'],
+    match: ['incline / knee / standard push-ups', 'push-up progression', 'standard push-up', 'incline push-up', 'knee push-up', 'push-ups', 'push-up', 'pushups', 'push up'],
     photoPath: 'assets/photos/pushup-standard.jpg',
     targetMuscles: ['Pectoralis Major', 'Triceps Brachii', 'Anterior Deltoid', 'Core'],
     formCue: 'Plank body line from head to heels • Lower chest to 2 inches from floor • Elbows at 45°',
@@ -67,7 +67,7 @@ export const EXERCISE_PHOTO_REGISTRY = [
   {
     id: 'squat-chair',
     name: 'Tempo Chair Squats',
-    match: ['chair squat', 'chair squats', 'tempo chair'],
+    match: ['tempo chair squats', 'chair squats', 'chair squat', 'tempo chair'],
     photoPath: 'assets/photos/squat-chair.jpg',
     targetMuscles: ['Quadriceps', 'Gluteus Maximus', 'Hamstrings'],
     formCue: 'Tap glutes softly to chair seat without resting weight • Drive through heels to stand',
@@ -79,7 +79,7 @@ export const EXERCISE_PHOTO_REGISTRY = [
   {
     id: 'squat-bulgarian',
     name: 'Bulgarian Split Squats (Bed or Chair)',
-    match: ['bulgarian split squat', 'split squats', 'bulgarian'],
+    match: ['bulgarian split squats', 'bulgarian split squat', 'split squats', 'bulgarian'],
     photoPath: 'assets/photos/squat-bulgarian.jpg',
     targetMuscles: ['Unilateral Quads', 'Glute Medius & Maximus', 'Hamstrings'],
     formCue: 'Rear foot elevated on bench/chair • Descend vertically until front thigh is parallel',
@@ -91,7 +91,7 @@ export const EXERCISE_PHOTO_REGISTRY = [
   {
     id: 'squat-pistol',
     name: 'Pistol Squat / Archer Squat Progressions',
-    match: ['pistol squat', 'archer squat', 'single-leg squat'],
+    match: ['pistol squat / archer squat', 'pistol squat', 'archer squat', 'single-leg squat', 'pistol'],
     photoPath: 'assets/photos/squat-pistol.jpg',
     targetMuscles: ['Quads', 'Glutes', 'Ankle Dorsiflexion', 'Core Balance'],
     formCue: 'Extend non-working leg forward • Keep working heel flat on floor • Control balance',
@@ -103,7 +103,7 @@ export const EXERCISE_PHOTO_REGISTRY = [
   {
     id: 'squat-jump',
     name: 'Squat Jumps / High-Burn Jumps',
-    match: ['squat jump', 'squat jumps', 'high-burn jumps'],
+    match: ['squat jumps / fast squats', 'squat jumps', 'squat jump', 'jump squats', 'high-burn jumps', 'lower body gauntlet'],
     photoPath: 'assets/photos/squat-jump.jpg',
     targetMuscles: ['Fast-Twitch Quads', 'Calves', 'Glutes', 'Cardiovascular System'],
     formCue: 'Deep squat load • Explosive vertical takeoff • Soft toe-to-heel landing transition',
@@ -115,7 +115,7 @@ export const EXERCISE_PHOTO_REGISTRY = [
   {
     id: 'lunge-curtsy-sumo',
     name: 'Curtsy Lunges to Sumo Squat',
-    match: ['curtsy', 'sumo squat', 'curtsy lunges'],
+    match: ['curtsy lunges to sumo squat', 'curtsy lunges', 'curtsy lunge', 'sumo squat', 'curtsy'],
     photoPath: 'assets/photos/lunge-curtsy-sumo.jpg',
     targetMuscles: ['Gluteus Medius', 'Adductors (Inner Thighs)', 'Quads'],
     formCue: 'Cross rear leg diagonally behind • Transition directly into wide stance sumo squat',
@@ -127,7 +127,7 @@ export const EXERCISE_PHOTO_REGISTRY = [
   {
     id: 'wall-sit',
     name: 'Wall Sit Isometric Burnout',
-    match: ['wall sit', 'wall-sit'],
+    match: ['wall sit isometric burnout', 'wall sit', 'wall-sit'],
     photoPath: 'assets/photos/wall-sit.jpg',
     targetMuscles: ['Quadriceps Endurance', 'Glutes', 'Core Stability'],
     formCue: 'Back flat against wall • Thighs parallel to floor at 90° angle • Hands off thighs',
@@ -139,7 +139,7 @@ export const EXERCISE_PHOTO_REGISTRY = [
   {
     id: 'squat-air',
     name: 'Bodyweight Air Squats & Fast Squats',
-    match: ['squat', 'squats', 'air squats', 'fast squats', 'bodyweight squats'],
+    match: ['fast bodyweight squats', 'air squat pulses', 'air squats', 'air squat', 'fast squats', 'bodyweight squats', 'squats', 'squat'],
     photoPath: 'assets/photos/squat-air.jpg',
     targetMuscles: ['Quadriceps', 'Gluteus Maximus', 'Hamstrings', 'Core'],
     formCue: 'Feet shoulder-width apart • Knees tracking over toes • Chest upright • Hip hinge depth',
@@ -151,7 +151,7 @@ export const EXERCISE_PHOTO_REGISTRY = [
   {
     id: 'core-shoulder-taps',
     name: 'Plank Shoulder Taps to Bear Crawl Hold',
-    match: ['shoulder taps', 'bear crawl hold', 'plank shoulder taps'],
+    match: ['plank shoulder taps', 'shoulder taps', 'bear crawl hold'],
     photoPath: 'assets/photos/core-shoulder-taps.jpg',
     targetMuscles: ['Anti-Rotational Core', 'Deltoids', 'Transverse Abdominis'],
     formCue: 'Wide foot stance for anti-rotation • Tap opposite shoulder without swaying hips',
@@ -163,7 +163,7 @@ export const EXERCISE_PHOTO_REGISTRY = [
   {
     id: 'core-plank-dips',
     name: 'Elbow Plank & Hip Dips',
-    match: ['elbow plank', 'plank dips', 'hip dips'],
+    match: ['elbow plank & hip dips', 'isometric core finisher', 'elbow plank', 'plank dips', 'hip dips', 'l-sit / plank', 'plank'],
     photoPath: 'assets/photos/core-plank-dips.jpg',
     targetMuscles: ['Obliques', 'Rectus Abdominis', 'Shoulder Girdle'],
     formCue: 'Forearms parallel • Rotate hips side-to-side hovering 1 inch off mat',
@@ -175,7 +175,7 @@ export const EXERCISE_PHOTO_REGISTRY = [
   {
     id: 'rows-doorframe',
     name: 'Doorframe / Backpack Bodyweight Rows',
-    match: ['doorframe', 'backpack rows', 'bodyweight rows', 'towel rows'],
+    match: ['doorframe bodyweight rows', 'backpack / door rows', 'doorframe rows', 'backpack rows', 'door rows', 'doorframe', 'bodyweight rows', 'towel rows'],
     photoPath: 'assets/photos/rows-doorframe.jpg',
     targetMuscles: ['Latissimus Dorsi', 'Rhomboids', 'Rear Deltoids', 'Biceps'],
     formCue: 'Grip doorframe or towel • Lean back with straight spine • Pull chest to hands',
@@ -187,7 +187,7 @@ export const EXERCISE_PHOTO_REGISTRY = [
   {
     id: 'lunge-reverse',
     name: 'Reverse Lunges with Knee Drive',
-    match: ['reverse lunge', 'reverse lunges', 'knee drive', 'lunge'],
+    match: ['reverse lunges with knee drive', 'reverse lunges', 'reverse lunge', 'knee drive'],
     photoPath: 'assets/photos/lunge-reverse.jpg',
     targetMuscles: ['Glutes', 'Quads', 'Hip Flexors', 'Balance'],
     formCue: 'Step backward into 90/90 lunge • Drive back knee explosively up toward chest',
@@ -199,7 +199,7 @@ export const EXERCISE_PHOTO_REGISTRY = [
   {
     id: 'bridge-glute',
     name: 'Single-Leg & Standard Glute Bridges',
-    match: ['glute bridge', 'glute bridges', 'single-leg bridge', 'bridge'],
+    match: ['glute bridges to reverse crunch', 'single-leg glute bridges', 'glute bridges', 'glute bridge', 'single-leg bridge', 'bridge', 'reverse crunch'],
     photoPath: 'assets/photos/bridge-glute.jpg',
     targetMuscles: ['Gluteus Maximus', 'Hamstrings', 'Lower Back Stabilizers'],
     formCue: 'Drive through heels to lift hips • Squeeze glutes hard at top without arching lower back',
@@ -211,7 +211,7 @@ export const EXERCISE_PHOTO_REGISTRY = [
   {
     id: 'calves-stretch',
     name: 'Calf Raises & Arm Stretches',
-    match: ['calf raises', 'calf raise', 'arm stretches'],
+    match: ['calf raises & arm stretches', 'calf raises', 'calf raise', 'arm stretches'],
     photoPath: 'assets/photos/calves-stretch.jpg',
     targetMuscles: ['Gastrocnemius', 'Soleus', 'Shoulder Mobility'],
     formCue: 'Rise tall onto ball of foot • Pause at peak contraction • Lower heels under control',
@@ -223,7 +223,7 @@ export const EXERCISE_PHOTO_REGISTRY = [
   {
     id: 'core-deadbugs',
     name: 'Deadbugs & Hollow Hold Prep',
-    match: ['deadbug', 'deadbugs', 'hollow hold'],
+    match: ['deadbugs & hollow hold prep', 'deadbugs', 'deadbug', 'hollow hold'],
     photoPath: 'assets/photos/core-deadbugs.jpg',
     targetMuscles: ['Deep Core', 'Transverse Abdominis', 'Coordination'],
     formCue: 'Press lower back flush against floor • Extend opposite arm and leg simultaneously',
@@ -235,7 +235,7 @@ export const EXERCISE_PHOTO_REGISTRY = [
   {
     id: 'core-bicycle',
     name: 'Bicycle Crunches with 2s Pause',
-    match: ['bicycle crunches', 'bicycle crunch', 'bicycle'],
+    match: ['bicycle crunches with 2s pause', 'bicycle crunches', 'bicycle crunch', 'bicycle'],
     photoPath: 'assets/photos/core-bicycle.jpg',
     targetMuscles: ['Internal & External Obliques', 'Rectus Abdominis'],
     formCue: 'Rotate shoulder to opposite knee • Hold rotation 2s • Keep lower back pressed down',
@@ -247,7 +247,7 @@ export const EXERCISE_PHOTO_REGISTRY = [
   {
     id: 'core-sculpt-matrix',
     name: 'Core Sculpt Matrix (Russian Twists & Leg Raises)',
-    match: ['russian twists', 'leg raises', 'core sculpt', 'twists'],
+    match: ['core sculpt matrix', 'russian twists', 'leg raises', 'core sculpt'],
     photoPath: 'assets/photos/core-sculpt-matrix.jpg',
     targetMuscles: ['Transverse Abdominis', 'Obliques', 'Lower Abs'],
     formCue: 'Seated V-sit angle • Rotate torso with ribs engaged • Lower legs without arching lower back',
@@ -259,7 +259,7 @@ export const EXERCISE_PHOTO_REGISTRY = [
   {
     id: 'core-posterior-chain',
     name: 'Posterior Chain & Core Dominance (Superman & Bird-Dog)',
-    match: ['superman', 'bird-dog', 'bird dog', 'posterior chain'],
+    match: ['posterior chain & core dominance', 'posterior chain', 'superman', 'bird-dog', 'bird dog'],
     photoPath: 'assets/photos/core-posterior-chain.jpg',
     targetMuscles: ['Erector Spinae', 'Glutes', 'Rear Deltoids', 'Core Balance'],
     formCue: 'Lie prone • Lift chest, arms, and legs 2 inches off mat • Keep neck neutral looking down',
@@ -271,7 +271,7 @@ export const EXERCISE_PHOTO_REGISTRY = [
   {
     id: 'cardio-skaters',
     name: 'Speed Skaters / Lateral Bounds',
-    match: ['skaters', 'speed skaters', 'lateral bounds'],
+    match: ['cardio interval round 1', 'speed skaters', 'lateral bounds', 'skaters'],
     photoPath: 'assets/photos/cardio-skaters.jpg',
     targetMuscles: ['Glute Medius', 'Lateral Leg Power', 'Cardio Stamina'],
     formCue: 'Bound side-to-side landing softly on single bent leg • Sweep rear leg behind',
@@ -283,7 +283,7 @@ export const EXERCISE_PHOTO_REGISTRY = [
   {
     id: 'cardio-climbers',
     name: 'Mountain Climbers (Rapid Knee Drives)',
-    match: ['mountain climbers', 'mountain climber', 'climbers'],
+    match: ['cardio interval round 2', 'mountain climbers', 'mountain climber', 'climbers'],
     photoPath: 'assets/photos/cardio-climbers.jpg',
     targetMuscles: ['Hip Flexors', 'Rectus Abdominis', 'Cardio', 'Shoulder Endurance'],
     formCue: 'High plank position • Drive knees rapidly toward chest without bouncing hips high',
@@ -295,7 +295,7 @@ export const EXERCISE_PHOTO_REGISTRY = [
   {
     id: 'cardio-burpees',
     name: 'Burpee Step-Outs / Floor Touch Hops',
-    match: ['burpee', 'burpees', 'floor touch hops'],
+    match: ['high-burn metabolic finisher', 'burpee step-outs', 'floor touch hops', 'burpee', 'burpees'],
     photoPath: 'assets/photos/cardio-burpees.jpg',
     targetMuscles: ['Full Body Conditioning', 'Chest', 'Quads', 'Core'],
     formCue: 'Squat to place hands down • Step or jump to plank • Return to squat • Jump vertical reach',
@@ -307,7 +307,7 @@ export const EXERCISE_PHOTO_REGISTRY = [
   {
     id: 'cardio-boxing',
     name: 'Silent Shadow Boxing & March',
-    match: ['shadow boxing', 'boxing', 'silent march'],
+    match: ['silent shadow boxing & march', 'shadow boxing spurt', 'shadow boxing', 'boxing', 'silent march'],
     photoPath: 'assets/photos/cardio-boxing.jpg',
     targetMuscles: ['Deltoids', 'Rotator Cuff', 'Core Rotation', 'Aerobic Metabolism'],
     formCue: 'Athletic boxer stance • Throw jab-cross-hook combinations with quick recoil',
@@ -319,7 +319,7 @@ export const EXERCISE_PHOTO_REGISTRY = [
   {
     id: 'cardio-jacks-knees',
     name: 'Half-Jacks or Fast High Knees',
-    match: ['high knees', 'half-jacks', 'jumping jacks', 'jacks'],
+    match: ['half-jacks or fast high knees', 'high-knee jog to lateral shuffles', 'high-knee jog', 'lateral shuffles', 'high knees', 'half-jacks', 'jumping jacks', 'jacks'],
     photoPath: 'assets/photos/cardio-jacks-knees.jpg',
     targetMuscles: ['Cardiovascular System', 'Calves', 'Hip Flexors'],
     formCue: 'Stay light on balls of feet • Drive knees to waist height with upright posture',
@@ -331,7 +331,7 @@ export const EXERCISE_PHOTO_REGISTRY = [
   {
     id: 'mobility-neck-rolls',
     name: 'Seated Chin Tucks & Neck Rolls',
-    match: ['neck rolls', 'chin tucks', 'neck stretch'],
+    match: ['seated chin tucks & neck rolls', 'chin tucks & neck rolls', 'seated chin tucks', 'neck rolls', 'chin tucks', 'neck stretch'],
     photoPath: 'assets/photos/mobility-neck-rolls.jpg',
     targetMuscles: ['Cervical Spine Flexors', 'Upper Trapezius', 'Levator Scapulae'],
     formCue: 'Sit upright • Gently roll chin toward chest and ear to shoulder • Never force backward',
@@ -343,7 +343,7 @@ export const EXERCISE_PHOTO_REGISTRY = [
   {
     id: 'mobility-spinal-twist',
     name: 'Seated Spinal Twist',
-    match: ['spinal twist', 'seated twist', 'spine stretch'],
+    match: ['seated spinal twist', 'chair spinal twist', 'chair twist'],
     photoPath: 'assets/photos/mobility-spinal-twist.jpg',
     targetMuscles: ['Thoracic Spine Mobility', 'Obliques', 'Back Extensors'],
     formCue: 'Inhale to lengthen spine tall • Exhale to twist from chest holding chair backrest',
@@ -355,7 +355,7 @@ export const EXERCISE_PHOTO_REGISTRY = [
   {
     id: 'mobility-eagle-arms',
     name: 'Eagle Arm Shoulder Opener',
-    match: ['eagle arms', 'shoulder opener', 'eagle'],
+    match: ['eagle arm shoulder opener', 'eagle arm', 'eagle arms', 'shoulder opener', 'eagle'],
     photoPath: 'assets/photos/mobility-eagle-arms.jpg',
     targetMuscles: ['Rhomboids', 'Infraspinatus', 'Scapular Stretch'],
     formCue: 'Wrap elbows and forearms together • Lift elbows parallel to shoulders',
@@ -367,7 +367,7 @@ export const EXERCISE_PHOTO_REGISTRY = [
   {
     id: 'mobility-chest-expansion',
     name: 'Chest Expansion & Deep Rib Breathing',
-    match: ['chest expansion', 'rib breathing', 'chest opener'],
+    match: ['chest expansion & deep rib breathing', 'chest expansion', 'rib breathing', 'chest opener'],
     photoPath: 'assets/photos/mobility-chest-expansion.jpg',
     targetMuscles: ['Pectoralis Minor', 'Intercostal Muscles', 'Diaphragm'],
     formCue: 'Interlace fingers behind lower back • Open collarbones and expand ribs on deep inhale',
@@ -378,20 +378,32 @@ export const EXERCISE_PHOTO_REGISTRY = [
   // --- 32. PALMING EYES ---
   {
     id: 'mobility-palming-eyes',
-    name: 'Palming & Distant Focus (Eye Reset)',
-    match: ['palming', 'eye reset', 'eye stretch'],
+    name: 'Palming Eye Relaxation',
+    match: ['palming eye relaxation', 'palming & distant focus', 'palming', 'palming eyes', 'palm eyes'],
     photoPath: 'assets/photos/mobility-palming-eyes.jpg',
     targetMuscles: ['Extraocular Eye Muscles', 'Ciliary Relaxation', 'Vagus Nerve Reset'],
-    formCue: 'Rub palms warm • Cupping warm palms gently over closed eyes without pressure',
+    formCue: 'Rub palms warm • Cup warm palms gently over closed eyes seated comfortably without pressure',
     tempo: 'Continuous Soothing Rest',
     icon: '👁️'
+  },
+
+  // --- 32B. DISTANT FOCUS EYE RESET ---
+  {
+    id: 'mobility-distant-focus',
+    name: 'Distant Focus Eye Reset',
+    match: ['distant focus eye reset', 'distant focus', 'distant-focus', 'eye reset', 'eye relaxation', 'screen break'],
+    photoPath: 'assets/photos/mobility-distant-focus.jpg',
+    targetMuscles: ['Ciliary Muscle Accommodation', 'Visual Cortex Relief'],
+    formCue: 'Look out a window or gaze at an object 20+ feet away • Relax eye muscles with normal natural posture',
+    tempo: '20s Soft Distant Gaze',
+    icon: '🪟'
   },
 
   // --- 33. WRIST STRETCH ---
   {
     id: 'mobility-wrist-stretch',
     name: 'Wrist Flexor & Extensor Stretch',
-    match: ['wrist stretch', 'wrist flexor', 'wrist extensor'],
+    match: ['wrist, elbow & shoulder conditioning', 'wrist flexor & extensor stretch', 'wrist flexor', 'wrist extensor', 'wrist stretch', 'wrist conditioning'],
     photoPath: 'assets/photos/mobility-wrist-stretch.jpg',
     targetMuscles: ['Forearm Flexors & Extensors', 'Carpal Tunnel Decompression'],
     formCue: 'Extend arm straight forward • Gently draw fingers back toward chest with opposite hand',
@@ -403,7 +415,7 @@ export const EXERCISE_PHOTO_REGISTRY = [
   {
     id: 'mobility-cat-cow',
     name: 'Chair Cat-Cow Flow',
-    match: ['cat-cow', 'cat cow', 'chair cat cow'],
+    match: ['chair cat-cow flow', 'cat-cow flow', 'cat-cow', 'cat cow'],
     photoPath: 'assets/photos/mobility-cat-cow.jpg',
     targetMuscles: ['Full Spine Articulation', 'Thoracic & Lumbar Mobility'],
     formCue: 'Inhale curve spine forward lift chest (Cow) • Exhale round spine tucked chin (Cat)',
@@ -415,7 +427,7 @@ export const EXERCISE_PHOTO_REGISTRY = [
   {
     id: 'mobility-side-reach',
     name: 'Standing Side Reach & Yawn',
-    match: ['side reach', 'standing side reach', 'lateral stretch'],
+    match: ['standing side reach & yawn', 'standing side reach', 'side reach', 'lateral stretch'],
     photoPath: 'assets/photos/mobility-side-reach.jpg',
     targetMuscles: ['Latissimus Dorsi', 'Intercostals', 'Quadratus Lumborum'],
     formCue: 'Reach arm overhead and arch laterally • Keep both feet rooted evenly into floor',
@@ -427,7 +439,7 @@ export const EXERCISE_PHOTO_REGISTRY = [
   {
     id: 'yoga-childs-pose',
     name: 'Kneeling Child’s Pose',
-    match: ["child's pose", 'childs pose', 'child pose'],
+    match: ["kneeling child's pose", "child's pose", 'childs pose', 'child pose', 'balasana'],
     photoPath: 'assets/photos/yoga-childs-pose.jpg',
     targetMuscles: ['Latissimus Dorsi', 'Lumbar Spine', 'Hip Adductors'],
     formCue: 'Kneel with big toes touching • Sit hips back onto heels • Extend arms far forward',
@@ -439,7 +451,7 @@ export const EXERCISE_PHOTO_REGISTRY = [
   {
     id: 'yoga-knee-chest',
     name: 'Supine Knee-to-Chest Hug',
-    match: ['knee-to-chest', 'knee to chest', 'supine hug'],
+    match: ['supine knee-to-chest hug', 'knee-to-chest hug', 'knee-to-chest', 'knee to chest', 'supine hug'],
     photoPath: 'assets/photos/yoga-knee-chest.jpg',
     targetMuscles: ['Lower Back Decompression', 'Glutes', 'Hip Flexors'],
     formCue: 'Lie flat on back • Hug both knees gently into chest • Relax shoulders to mat',
@@ -451,7 +463,7 @@ export const EXERCISE_PHOTO_REGISTRY = [
   {
     id: 'yoga-lying-twist',
     name: 'Lying Spinal Twist',
-    match: ['lying spinal twist', 'lying twist', 'supine twist'],
+    match: ['lying spinal twist', 'lying twist', 'supine twist', 'spinal twist'],
     photoPath: 'assets/photos/yoga-lying-twist.jpg',
     targetMuscles: ['Lumbar-Thoracic Spine', 'Chest', 'Glute Stretch'],
     formCue: 'Guide knees over to side while keeping opposite shoulder flat on mat',
@@ -463,7 +475,7 @@ export const EXERCISE_PHOTO_REGISTRY = [
   {
     id: 'yoga-legs-wall',
     name: 'Legs Up Against Wall / Box Breathing',
-    match: ['legs up', 'legs-up', 'legs up against wall'],
+    match: ['legs up against wall', 'legs up the wall', 'legs-up', 'legs up', 'box breathing'],
     photoPath: 'assets/photos/yoga-legs-wall.jpg',
     targetMuscles: ['Venous Return Enhancement', 'Hamstrings', 'Central Nervous System Reset'],
     formCue: 'Swing legs upright vertically against wall • Rest arms by sides palms up',
@@ -475,7 +487,7 @@ export const EXERCISE_PHOTO_REGISTRY = [
   {
     id: 'yoga-down-dog-cobra',
     name: 'Downward Facing Dog to Cobra Flow',
-    match: ['downward dog', 'down dog', 'cobra flow', 'down dog to cobra'],
+    match: ['downward facing dog to cobra', 'surya namaskar', 'sun salutations flow', 'sun salutations', 'downward facing dog', 'downward dog', 'down dog', 'cobra flow', 'cobra'],
     photoPath: 'assets/photos/yoga-down-dog-cobra.jpg',
     targetMuscles: ['Posterior Chain', 'Abdominals', 'Shoulder Girdle'],
     formCue: 'Press hips high in Down Dog • Transition smoothly through plank into chest-up Cobra',
@@ -487,7 +499,7 @@ export const EXERCISE_PHOTO_REGISTRY = [
   {
     id: 'yoga-low-lunge-splits',
     name: 'Low Lunge to Half Splits Flow',
-    match: ['low lunge', 'half splits', 'lunge to splits'],
+    match: ['low lunge to half splits flow', 'low lunge', 'half splits', 'lunge to splits'],
     photoPath: 'assets/photos/yoga-low-lunge-splits.jpg',
     targetMuscles: ['Hip Flexors', 'Hamstrings', 'Ankle Mobility'],
     formCue: 'Sink hips forward in low lunge • Shift hips back extending front knee for hamstring stretch',
@@ -499,7 +511,7 @@ export const EXERCISE_PHOTO_REGISTRY = [
   {
     id: 'yoga-butterfly-fold',
     name: 'Seated Butterfly & Forward Fold',
-    match: ['butterfly', 'butterfly fold', 'forward fold'],
+    match: ['seated butterfly & forward fold', 'seated butterfly', 'butterfly fold', 'butterfly'],
     photoPath: 'assets/photos/yoga-butterfly-fold.jpg',
     targetMuscles: ['Inner Thigh Adductors', 'Groin', 'Lower Back Extension'],
     formCue: 'Soles of feet together • Hinge forward at hips keeping chest open',
@@ -511,7 +523,7 @@ export const EXERCISE_PHOTO_REGISTRY = [
   {
     id: 'mobility-worlds-greatest',
     name: 'World’s Greatest Stretch Flow',
-    match: ["world's greatest", 'worlds greatest', 'greatest stretch'],
+    match: ["world's greatest stretch flow", "worlds greatest stretch flow", "world's greatest stretch", "worlds greatest stretch", "world's greatest", "worlds greatest", "greatest stretch"],
     photoPath: 'assets/photos/mobility-worlds-greatest.jpg',
     targetMuscles: ['Hip Flexors', 'Thoracic Spine', 'Hamstrings', 'Ankle'],
     formCue: 'Deep runner lunge • Drop inside elbow toward floor • Rotate arm high to sky',
@@ -523,7 +535,7 @@ export const EXERCISE_PHOTO_REGISTRY = [
   {
     id: 'mobility-90-90-hips',
     name: '90/90 Hip Mobility Switches',
-    match: ['90/90', 'hip switches', '90 90'],
+    match: ['90/90 hip mobility switches', '90/90 hip switches', '90/90', 'hip switches', '90 90'],
     photoPath: 'assets/photos/mobility-90-90-hips.jpg',
     targetMuscles: ['Hip Internal & External Rotation', 'Glute Medius'],
     formCue: 'Seated with both knees bent at 90° angles • Rotate knees side-to-side without hands',
@@ -535,7 +547,7 @@ export const EXERCISE_PHOTO_REGISTRY = [
   {
     id: 'mobility-puppy-dog',
     name: 'Puppy Dog Shoulder Extension',
-    match: ['puppy dog', 'puppy pose', 'shoulder extension'],
+    match: ['puppy dog shoulder extension', 'puppy dog', 'puppy pose', 'shoulder extension'],
     photoPath: 'assets/photos/mobility-puppy-dog.jpg',
     targetMuscles: ['Thoracic Extension', 'Lats', 'Shoulders'],
     formCue: 'Hips stacked over knees • Walk hands forward lowering forehead and chest to mat',
@@ -547,7 +559,7 @@ export const EXERCISE_PHOTO_REGISTRY = [
   {
     id: 'mobility-pigeon-pose',
     name: 'Pigeon Pose / Figure-4 Stretch',
-    match: ['pigeon pose', 'pigeon stretch', 'figure-4'],
+    match: ['seated & floor hip openers', 'pigeon pose / figure-4 stretch', 'pigeon pose', 'pigeon stretch', 'figure-4'],
     photoPath: 'assets/photos/mobility-pigeon-pose.jpg',
     targetMuscles: ['Glute Deep Rotators', 'Piriformis', 'Hip Capsule'],
     formCue: 'Front shin angled across mat • Square hips to floor • Lower chest forward over shin',
@@ -559,7 +571,7 @@ export const EXERCISE_PHOTO_REGISTRY = [
   {
     id: 'yoga-warrior-triangle',
     name: 'Warrior II & Triangle Standing Postures',
-    match: ['warrior ii', 'warrior 2', 'triangle pose', 'warrior'],
+    match: ['warrior ii & triangle standing postures', 'warrior ii', 'warrior 2', 'triangle standing postures', 'triangle pose', 'warrior'],
     photoPath: 'assets/photos/yoga-warrior-triangle.jpg',
     targetMuscles: ['Quads', 'Adductors', 'Side Obliques', 'Balance'],
     formCue: 'Front knee over ankle at 90° • Arms extended parallel • Reach and hinge for Triangle',
@@ -571,7 +583,7 @@ export const EXERCISE_PHOTO_REGISTRY = [
   {
     id: 'yoga-mountain-reach',
     name: 'Mountain Pose to Overhead Reach',
-    match: ['mountain pose', 'mountain reach', 'tadasana'],
+    match: ['mountain pose to overhead reach', 'mountain pose', 'mountain reach', 'tadasana'],
     photoPath: 'assets/photos/yoga-mountain-reach.jpg',
     targetMuscles: ['Postural Alignment', 'Core Base', 'Shoulder Lengthening'],
     formCue: 'Ground all 4 corners of feet • Engage core • Reach arms high toward ceiling',
@@ -583,7 +595,7 @@ export const EXERCISE_PHOTO_REGISTRY = [
   {
     id: 'yoga-savasana',
     name: 'Deep Savasana Recovery Breath',
-    match: ['savasana', 'corpse pose', 'relaxation'],
+    match: ['guided body scan & savasana', 'deep savasana recovery breath', 'full body cool down & guided breathing', 'pranayama & centering meditation', 'savasana', 'corpse pose', 'body scan'],
     photoPath: 'assets/photos/yoga-savasana.jpg',
     targetMuscles: ['Parasympathetic Recovery', 'Full Body Relaxation'],
     formCue: 'Lie fully flat on back • Feet floppy • Palms facing up • Breathe slowly into belly',
@@ -595,7 +607,7 @@ export const EXERCISE_PHOTO_REGISTRY = [
   {
     id: 'mobility-warmup-general',
     name: 'Dynamic Joint Mobility & Warmup',
-    match: ['warmup', 'warm-up', 'mobility flow', 'general warmup'],
+    match: ['dynamic joint prep & heart rate ramp', 'joint mobility & arm rotations', 'dynamic warmup & toe touches', 'warmup hip openers & good mornings', 'progressive warmup & mobility', 'static recovery stretches & hydration', 'cooling down stretches', 'warmup', 'warm-up', 'mobility flow', 'general warmup', 'joint mobility', 'arm rotations'],
     photoPath: 'assets/photos/mobility-warmup-general.jpg',
     targetMuscles: ['Full Body Joints', 'Synovial Fluid Activation', 'Core Temperature'],
     formCue: 'Continuous low-impact arm circles, hip openers, and torso twists to prepare body',
@@ -607,15 +619,42 @@ export const EXERCISE_PHOTO_REGISTRY = [
 export const EXERCISE_VISUAL_REGISTRY = EXERCISE_PHOTO_REGISTRY;
 
 /**
+ * Normalizes string for robust matching.
+ */
+function normalizeText(text) {
+  return (text || '')
+    .toLowerCase()
+    .replace(/[’‘`]/g, "'")
+    .replace(/[^a-z0-9'\/ ]+/g, ' ')
+    .replace(/\s+/g, ' ')
+    .trim();
+}
+
+/**
  * Returns the HTML string for the Realistic Human Fitness Photo Demonstration.
  * Displays high-quality professional photography of a real athlete performing the movement.
  */
 export function getExerciseAnimationHtml(exerciseName, categoryHint = '', tips = '', options = {}) {
-  const normName = (exerciseName || '').toLowerCase().trim();
+  const normName = normalizeText(exerciseName);
 
-  let matchEntry = EXERCISE_PHOTO_REGISTRY.find(reg =>
-    reg.match.some(m => normName.includes(m))
-  );
+  // Score match candidates by longest matched substring
+  let bestMatch = null;
+  let bestScore = 0;
+
+  for (const reg of EXERCISE_PHOTO_REGISTRY) {
+    for (const phrase of reg.match) {
+      const normPhrase = normalizeText(phrase);
+      if (normName.includes(normPhrase)) {
+        const score = normPhrase.length;
+        if (score > bestScore) {
+          bestScore = score;
+          bestMatch = reg;
+        }
+      }
+    }
+  }
+
+  let matchEntry = bestMatch;
 
   if (!matchEntry) {
     const slug = normName.replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, '');
@@ -665,3 +704,4 @@ export function getExerciseAnimationHtml(exerciseName, categoryHint = '', tips =
     </div>
   `;
 }
+

@@ -63,10 +63,11 @@ export const activitiesData = [
       'Calms study anxiety before quizzes and presentations'
     ],
     instructions: [
-      { step: 1, name: 'Palming & Distant Focus', durationSec: 60, tips: 'Rub palms together till warm, cup over closed eyes, breathe deeply.' },
-      { step: 2, name: 'Wrist Flexor & Extensor Stretch', durationSec: 60, tips: 'Extend arm, gently pull fingers back 30s each hand.' },
-      { step: 3, name: 'Chair Cat-Cow Flow', durationSec: 90, tips: 'Hands on knees; arch spine forward inhaling, round spine back exhaling.' },
-      { step: 4, name: 'Standing Side Reach & Yawn', durationSec: 90, tips: 'Reach both arms overhead, bend sideways, open ribcage.' }
+      { step: 1, name: 'Palming Eye Relaxation', durationSec: 45, tips: 'Rub palms together till warm, cup gently over closed eyes, breathe deeply.' },
+      { step: 2, name: 'Distant Focus Eye Reset', durationSec: 45, tips: 'Gaze at an object 20+ feet away or look out the window to relax eye focus muscles.' },
+      { step: 3, name: 'Wrist Flexor & Extensor Stretch', durationSec: 60, tips: 'Extend arm, gently pull fingers back 30s each hand.' },
+      { step: 4, name: 'Chair Cat-Cow Flow', durationSec: 75, tips: 'Hands on knees; arch spine forward inhaling, round spine back exhaling.' },
+      { step: 5, name: 'Standing Side Reach & Yawn', durationSec: 75, tips: 'Reach both arms overhead, bend sideways, open ribcage.' }
     ]
   },
   {
