@@ -397,7 +397,7 @@ export class ActivityPlayerModal {
       <div class="exercise-anim-container">
         <div class="exercise-anim-top-bar">
           <span class="exercise-anim-badge">
-            <span class="pulse-dot"></span> Form Animation Guide
+            <span class="pulse-dot"></span> Exercise Demonstration Player
           </span>
           <span class="exercise-anim-step-title">Step ${this.currentStepIdx + 1} of ${this.totalSteps}</span>
         </div>
