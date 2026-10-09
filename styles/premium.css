@@ -1,0 +1,165 @@
+/* Premium UI Enhancements */
+
+/* Typography */
+body {
+  font-family: var(--font-sans);
+  font-size: 1rem;
+  line-height: 1.6;
+  color: var(--text-main);
+}
+
+h1, .hero-welcome-title {
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: clamp(2rem, 5vw, 3rem);
+  line-height: 1.2;
+  margin-bottom: 0.5rem;
+  color: var(--text-main);
+}
+
+h2, h3, h4, h5, h6 {
+  font-family: var(--font-display);
+  font-weight: 700;
+  margin-top: 1.5rem;
+  margin-bottom: 0.75rem;
+  color: var(--text-main);
+}
+
+/* Buttons */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.35rem;
+  padding: 0.55rem 1.1rem;
+  border-radius: var(--radius-md);
+  font-weight: 600;
+  font-size: 0.94rem;
+  cursor: pointer;
+  transition: var(--transition-fast);
+  border: 1px solid transparent;
+}
+
+.btn-primary {
+  background: var(--primary);
+  color: var(--text-inverted);
+  box-shadow: var(--primary-glow);
+}
+
+.btn-primary:hover {
+  background: var(--primary-hover);
+  box-shadow: 0 0 20px rgba(249,115,22,0.45);
+}
+
+.btn-secondary {
+  background: var(--bg-card);
+  color: var(--text-main);
+  border-color: var(--border-subtle);
+}
+
+.btn-secondary:hover {
+  background: var(--bg-card-hover);
+  border-color: var(--border-bright);
+}
+
+.btn-cyan {
+  background: var(--accent-cyan);
+  color: var(--text-inverted);
+}
+
+.btn-cyan:hover {
+  background: var(--accent-cyan-light);
+}
+
+/* Glass Card */
+.glass-card {
+  background: var(--bg-card);
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--border-subtle);
+  padding: 1.5rem;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+  backdrop-filter: blur(8px);
+  transition: var(--transition-smooth);
+}
+
+.glass-card:hover {
+  box-shadow: 0 6px 18px rgba(0,0,0,0.12);
+  background: var(--bg-card-hover);
+}
+
+/* Navbar */
+.navbar {
+  background: var(--bg-surface);
+  border-bottom: 1px solid var(--border-subtle);
+  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+  padding: 0 1rem;
+}
+
+.nav-link-btn {
+  font-size: 0.94rem;
+  padding: 0.4rem 0.85rem;
+  border-radius: var(--radius-full);
+}
+
+.nav-link-btn.active {
+  background: var(--primary-light);
+  color: var(--text-inverted);
+  border-color: var(--border-primary);
+}
+
+/* Mobile Nav Bar */
+.mobile-nav-bar {
+  background: var(--bg-surface);
+  border-top: 1px solid var(--border-subtle);
+  box-shadow: 0 -2px 8px rgba(0,0,0,0.05);
+}
+
+.mobile-nav-btn {
+  flex: 1;
+  padding: 0.45rem 0;
+  font-size: 0.85rem;
+}
+
+.mobile-nav-btn.active {
+  background: var(--primary-light);
+  color: var(--text-inverted);
+}
+
+/* Badges */
+.badge {
+  display: inline-block;
+  padding: 0.25rem 0.55rem;
+  border-radius: var(--radius-full);
+  font-size: 0.78rem;
+  font-weight: 600;
+}
+
+.badge-indigo { background: rgba(139,92,246,0.15); color: #8b5cf6; }
+.badge-cyan { background: rgba(20,184,166,0.15); color: #14b8a6; }
+.badge-emerald { background: rgba(16,185,129,0.15); color: #10b981; }
+.badge-amber { background: rgba(245,158,11,0.15); color: #fbbf24; }
+.badge-coral { background: rgba(244,63,94,0.15); color: #f43f5e; }
+
+/* Gradient Text – subtle */
+.gradient-text {
+  background: linear-gradient(135deg, var(--primary) 0%, var(--accent-cyan) 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* Hydration Card */
+.hydration-card {
+  background: var(--bg-card);
+  border-radius: var(--radius-lg);
+  padding: 1rem;
+  border: 1px solid var(--border-subtle);
+  box-shadow: 0 2px 6px rgba(0,0,0,0.04);
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .container { padding: 0 1rem; }
+  .hero-welcome-title { font-size: 2rem; }
+  .glass-card { padding: 1rem; }
+}
